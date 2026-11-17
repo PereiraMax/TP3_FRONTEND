@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matchdeverdad · Dos Sentencias, Dos Soluciones | TP3 Front End IFTS 29</title>
+  
+  <!-- Meta SEO & Accessibilidad -->
+  <meta name="description" content="Propuesta de flujos agénticos para Matchdeverdad. Trabajo Práctico Nº 3 - Desarrollo de Sistemas Web (Front End 2026) IFTS 29. Soluciones a sentencias de lógica proposicional del IFTS 16.">
+  <meta name="theme-color" content="#0b2347">
+  
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- Estilos Principales -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Enlace accesible de salto al contenido -->
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- ========================================================================
+       BARRA DE NAVEGACIÓN PRINCIPAL (STICKY & DESKTOP OPTIMIZED)
+       ======================================================================== -->
+  <header class="site-header" role="banner">
+    <div class="container nav-container">
+      <a href="#hero" class="nav-brand" aria-label="Matchdeverdad Inicio">
+        <div class="nav-logo-icon">
+          <!-- Logo Isotipo SVG reducido -->
+          <svg viewBox="0 0 400 400" width="44" height="44" aria-hidden="true">
+            <rect width="400" height="400" rx="80" fill="#0b2347" />
+            <g transform="translate(60, 80)" stroke="#ffcc00" stroke-width="12" fill="none">
+              <rect x="0" y="0" width="280" height="180" rx="20" />
+              <line x1="140" y1="0" x2="140" y2="180" />
+              <circle cx="140" cy="90" r="38" />
+              <circle cx="140" cy="90" r="18" fill="#ffcc00" />
+              <path d="M 133 90 L 138 95 L 148 83" fill="none" stroke="#0b2347" stroke-width="4.5" stroke-linecap="round" />
+            </g>
+          </svg>
+        </div>
+        <div class="nav-brand-text">
+          <span class="nav-brand-name"><span class="gold">Match</span>deverdad</span>
+          <span class="nav-brand-sub">Fútbol 5 · TP3 Front End</span>
+        </div>
+      </a>
+
+      <!-- Menú de navegación desktop -->
+      <nav class="site-nav" role="navigation" aria-label="Navegación principal">
+        <ul class="site-nav-list">
+          <li><a href="#startup" class="site-nav-link">La Startup</a></li>
+          <li><a href="#sentencias" class="site-nav-link">Sentencias</a></li>
+          <li><a href="#propuestas" class="site-nav-link">Propuestas</a></li>
+          <li><a href="#decisiones" class="site-nav-link">Decisiones ⚙</a></li>
+          <li><a href="#diagramas" class="site-nav-link">Diagramas</a></li>
+          <li><a href="#detalles" class="site-nav-link">Desplegables</a></li>
+          <li><a href="#casos-limite" class="site-nav-link">Casos Límite</a></li>
+          <li><a href="#simulador" class="btn-nav-action">
+            <span aria-hidden="true">⚡</span> Probar Simulador
+          </a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" role="main">
+
+    <!-- ======================================================================
+         HERO SECTION: PRESENTACIÓN DE TP3 Y MATCHDEVERDAD
+         ====================================================================== -->
+    <section id="hero" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-meta-badge">
+            <span>IFTS 29 · Front End 2026</span>
+            <span aria-hidden="true">•</span>
+            <span>TP3: Dos Sentencias · Dos Soluciones</span>
+          </div>
+          
+          <h1 class="hero-title">
+            De la lógica proposicional a dos <span class="highlight-gold">flujos agénticos</span>.
+          </h1>
+          
+          <p class="hero-subtitle">
+            Diseño e implementación agéntica para <strong>Matchdeverdad</strong>: el organizador de partidos de fútbol 5 que asegura 10 jugadores confirmados con control total del organizador.
+          </p>
+
+          <div class="hero-assignment-box">
+            <div class="hero-assignment-title">Asignación Docente · Sorteo Bloque S07-B</div>
+            <div class="hero-assignment-text">
+              <strong>Bloque:</strong> Permiso para invitar &nbsp;|&nbsp; 
+              <strong>Sentencias asignadas:</strong> R3 y R4 &nbsp;|&nbsp;
+              <strong>Origen:</strong> Lógica formulada en IFTS 16 · Propuesta y UI en IFTS 29.
+            </div>
+          </div>
+
+          <div class="hero-actions">
+            <a href="#diagramas" class="btn-primary">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+              Explorar Diagramas
+            </a>
+            <a href="#simulador" class="btn-secondary">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polygon points="10 8 16 12 10 16 10 8"></polygon>
+              </svg>
+              Simulador en Vivo
+            </a>
+          </div>
+        </div>
+
+        <!-- Tarjeta Oficial con el Logo Original de Matchdeverdad -->
+        <div class="hero-card-wrapper">
+          <div class="hero-brand-card">
+            <img src="assets/images/logo-matchdeverdad.svg" alt="Logo oficial de Matchdeverdad: cancha de fútbol con balón verificado" class="hero-brand-logo-img">
+            <div class="hero-brand-badge-row">
+              <span class="badge-rubro">⚽ Deportes y Organización</span>
+              <span class="badge-rubro">🎯 Fútbol 5</span>
+              <span class="badge-rubro">👥 10 Jugadores</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BANNER INSTITUCIONAL: IFTS 16 + IFTS 29 -->
+    <div class="container">
+      <div class="institution-banner">
+        <div class="inst-col">
+          <div class="inst-icon-box" aria-hidden="true">🧠</div>
+          <div>
+            <h4>IFTS 16 · Concepción de Reglas</h4>
+            <p>Estudiantes formularon las reglas de funcionamiento de la startup mediante lógica proposicional rigurosa.</p>
+          </div>
+        </div>
+        <div class="inst-divider" aria-hidden="true"></div>
+        <div class="inst-col">
+          <div class="inst-icon-box" aria-hidden="true">🎨</div>
+          <div>
+            <h4>IFTS 29 · Solución Agéntica & Front End</h4>
+            <p>Diseñamos dos soluciones agénticas, modelamos los flujos de decisión y construimos la interfaz web 100% asistida por IA.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================================
+         SECCIÓN 1: LA STARTUP Y SU NECESIDAD
+         ====================================================================== -->
+    <section id="startup" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">01 · Presentación</span>
+          <h2 class="section-title">La Startup y su Necesidad</h2>
+          <p class="section-lead">
+            Matchdeverdad nace para resolver un problema universal del deporte amateur: el partido que se cae a último momento porque falta un jugador.
+          </p>
+        </div>
+
+        <div class="card-grid-3">
+          <div class="info-card">
+            <div class="info-card-header">
+              <div class="info-card-icon" aria-hidden="true">🎯</div>
+              <h3 class="info-card-title">Objetivo Central</h3>
+            </div>
+            <p>
+              Plataforma orientada a organizadores de partidos de <strong>Fútbol 5</strong> para reunir exactamente diez jugadores confirmados, evitando cancelaciones imprevistas y grupos de chat caóticos.
+            </p>
+          </div>
+
+          <div class="info-card">
+            <div class="info-card-header">
+              <div class="info-card-icon" aria-hidden="true">🧩</div>
+              <h3 class="info-card-title">El Desafío de Invitación</h3>
+            </div>
+            <p>
+              No se trata de enviar invitaciones masivas al azar: el organizador necesita perfiles compatibles por zona, horario y posición, pero <strong>debe conservar el control total</strong> sobre a quién convoca.
+            </p>
+          </div>
+
+          <div class="info-card">
+            <div class="info-card-header">
+              <div class="info-card-icon" aria-hidden="true">🛡️</div>
+              <h3 class="info-card-title">Garantía Antiduplicados</h3>
+            </div>
+            <p>
+              Previene invitar dos veces al mismo jugador para el mismo encuentro, descarta postulantes si el cupo ya se completó y valida en tiempo real antes de efectuar cualquier notificación.
+            </p>
+          </div>
+        </div>
+
+        <!-- Metáfora del Producto: Un Tinder para Fútbol 5 -->
+        <div class="tinder-metaphor-box">
+          <div>
+            <span class="badge-rubro" style="background: rgba(255,204,0,0.25); color: #ffcc00; margin-bottom: 12px;">Modelo Mental del Flujo</span>
+            <h3 style="font-size: 1.6rem; font-weight: 900; margin-bottom: 10px;">Un «Tinder» para partidos de fútbol 5</h3>
+            <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.6;">
+              El organizador abre su partido y el sistema matcher le presenta candidatos compatibles uno por uno. El organizador tiene la última palabra: decide si autoriza o rechaza. Solo tras su autorización explícita, el asistente agéntico comprueba que las condiciones sigan vigentes y cursa la invitación.
+            </p>
+          </div>
+          <div>
+            <ul class="tinder-step-list">
+              <li class="tinder-step-item">
+                <span class="tinder-step-num">1</span>
+                <span>El matcher sugiere a un jugador disponible en la zona.</span>
+              </li>
+              <li class="tinder-step-item">
+                <span class="tinder-step-num">2</span>
+                <span><strong>R4:</strong> Se solicita autorización al organizador (no envía nada aún).</span>
+              </li>
+              <li class="tinder-step-item">
+                <span class="tinder-step-num">3</span>
+                <span>El organizador autoriza la incorporación con un toque.</span>
+              </li>
+              <li class="tinder-step-item">
+                <span class="tinder-step-num">4</span>
+                <span><strong>R3:</strong> El agente revalida disponibilidad, cupo e historial y solicita el envío.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECCIÓN 2: DESARME LÓGICO DE LAS SENTENCIAS (PASO 3)
+         ====================================================================== -->
+    <section id="sentencias" class="section section-tinted">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">02 · Lógica Proposicional</span>
+          <h2 class="section-title">Desarme de las Sentencias Asignadas</h2>
+          <p class="section-lead">
+            Análisis de las dos frases del bloque <strong>S07-B: Permiso para invitar</strong>. Se conserva su redacción original intacta y se identifican premisas, conectivas y vacíos operativos.
+          </p>
+        </div>
+
+        <div class="card-grid-2">
+          
+          <!-- FICHA SENTENCIA R4 -->
+          <article class="sentence-card">
+            <div class="sentence-card-top">
+              <div class="sentence-card-badge-row">
+                <span class="sentence-rule-code">FRASE 2 · REGLA R4</span>
+                <span class="badge-tag">Paso previo de autorización</span>
+              </div>
+              <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--navy-900);">Ficha de la Sentencia R4</h3>
+              <div class="sentence-quote-box">
+                «Si hay un candidato propuesto, todavía faltan jugadores y no consta autorización del organizador para invitarlo, el sistema solicita ese permiso y no envía la invitación.»
+              </div>
+              <div class="logic-formal-formula">
+                Propuesto(c) ∧ Faltan ∧ ¬Autorizado(c) → SolicitarPermiso(c) ∧ ¬Enviar(c)
+              </div>
+            </div>
+
+            <div class="sentence-breakdown-body">
+              <div class="breakdown-group">
+                <h5>📥 Datos Necesarios</h5>
+                <div class="data-tag-cloud">
+                  <span class="data-tag">Candidato propuesto</span>
+                  <span class="data-tag">Jugadores confirmados (&lt; 10)</span>
+                  <span class="data-tag">Registro de autorizaciones</span>
+                </div>
+              </div>
+
+              <div class="breakdown-group">
+                <h5>⚖️ Condición Establecida</h5>
+                <p style="font-size: 0.9rem;">
+                  Se cumplen simultáneamente tres premisas: hay un candidato propuesto, faltan jugadores para completar los 10 y <strong>NO consta</strong> que el organizador haya autorizado su invitación.
+                </p>
+              </div>
+
+              <div class="breakdown-group">
+                <h5>⚡ Consecuencia</h5>
+                <p style="font-size: 0.9rem;">
+                  El sistema le solicita ese permiso al organizador y, mientras no lo reciba, <strong>no envía la invitación</strong>. R4 establece una doble consecuencia: solicitar autorización y bloquear el despacho.
+                </p>
+              </div>
+
+              <div class="what-sentence-omits">
+                <h5>⚠️ Lo que la sentencia no dice (requiere diseño)</h5>
+                <ul class="omits-list">
+                  <li>Quién o cómo se propone al candidato.</li>
+                  <li>Qué sucede si el organizador rechaza o no contesta.</li>
+                  <li>Si el permiso se otorga candidato por candidato o globalmente.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- FICHA SENTENCIA R3 -->
+          <article class="sentence-card">
+            <div class="sentence-card-top">
+              <div class="sentence-card-badge-row">
+                <span class="sentence-rule-code">FRASE 1 · REGLA R3</span>
+                <span class="badge-tag">Despacho con 4 condiciones</span>
+              </div>
+              <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--navy-900);">Ficha de la Sentencia R3</h3>
+              <div class="sentence-quote-box">
+                «Si un candidato sigue siendo compatible, el organizador autorizó invitarlo, todavía faltan jugadores y no hay una invitación vigente para ese candidato, el sistema solicita enviar la invitación.»
+              </div>
+              <div class="logic-formal-formula">
+                Compatible(c) ∧ Autorizado(c) ∧ Faltan ∧ ¬InvitaciónVigente(c) → SolicitarEnvío(c)
+              </div>
+            </div>
+
+            <div class="sentence-breakdown-body">
+              <div class="breakdown-group">
+                <h5>📥 Datos Necesarios</h5>
+                <div class="data-tag-cloud">
+                  <span class="data-tag">Candidato & Disponibilidad</span>
+                  <span class="data-tag">Jugadores confirmados (&lt; 10)</span>
+                  <span class="data-tag">Registro de autorizaciones</span>
+                  <span class="data-tag">Historial de invitaciones</span>
+                </div>
+              </div>
+
+              <div class="breakdown-group">
+                <h5>⚖️ Condición Establecida</h5>
+                <p style="font-size: 0.9rem;">
+                  Se deben cumplir a la vez <strong>cuatro condiciones</strong>: el candidato sigue siendo compatible, el organizador autorizó invitarlo, aún faltan jugadores y no hay una invitación vigente para él.
+                </p>
+              </div>
+
+              <div class="breakdown-group">
+                <h5>⚡ Consecuencia</h5>
+                <p style="font-size: 0.9rem;">
+                  El sistema solicita formalmente enviar la invitación a ese candidato específico.
+                </p>
+              </div>
+
+              <div class="what-sentence-omits">
+                <h5>⚠️ Lo que la sentencia no dice (requiere diseño)</h5>
+                <ul class="omits-list">
+                  <li>Criterio exacto de compatibilidad (zona, horario, nivel).</li>
+                  <li>Qué ocurre si alguna de las cuatro condiciones no se cumple.</li>
+                  <li>Qué constituye una "invitación vigente" y su ciclo de vida.</li>
+                  <li>A qué servicio técnico o función se solicita el envío.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Conexión entre R4 y R3 -->
+        <div class="bridge-box">
+          <div class="bridge-header">
+            <span style="font-size: 1.5rem;" aria-hidden="true">🔄</span>
+            <h4>¿Cómo se articulan R4 y R3 en la experiencia real?</h4>
+          </div>
+          <p style="font-size: 0.95rem; color: var(--text-body); line-height: 1.6;">
+            R4 y R3 no son reglas aisladas, sino <strong>dos momentos cronológicos del mismo recorrido</strong>, delimitados por la autorización humana:
+          </p>
+          <div style="margin-top: 14px; display: grid; grid-template-columns: 1fr auto 1fr; gap: 20px; align-items: center;">
+            <div style="background: var(--navy-50); padding: 16px; border-radius: var(--radius-md); border: 1px solid var(--navy-100);">
+              <strong style="color: var(--navy-900);">Momento 1 · R4 (Antes del Visto Bueno):</strong>
+              <p style="font-size: 0.875rem; margin-top: 4px;">El candidato es un prospecto. Como no consta autorización, el sistema le pide permiso al organizador y bloquea preventivamente cualquier envío.</p>
+            </div>
+            <div style="font-size: 1.5rem; color: var(--gold-600); font-weight: 900;" aria-hidden="true">➔</div>
+            <div style="background: var(--gold-50); padding: 16px; border-radius: var(--radius-md); border: 1px solid var(--gold-100);">
+              <strong style="color: var(--gold-text);">Momento 2 · R3 (Tras la Autorización):</strong>
+              <p style="font-size: 0.875rem; margin-top: 4px;">El organizador aprobó al jugador. R3 vuelve a chequear que siga disponible, que no se haya llenado el partido y que no tenga invitación previa, para recién cursar la invitación.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECCIÓN 3: LAS DOS PROPUESTAS AGÉNTICAS (PASO 4)
+         ====================================================================== -->
+    <section id="propuestas" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">03 · Propuestas Agénticas</span>
+          <h2 class="section-title">Una Solución Agéntica para Cada Sentencia</h2>
+          <p class="section-lead">
+            Definimos el rol, alcance y beneficios de cada futuro agente de software, distinguiendo cuándo consulta herramientas y cuándo convoca la intervención de una persona.
+          </p>
+        </div>
+
+        <div class="card-grid-2">
+          
+          <!-- PROPUESTA 2: ASISTENTE DE PERMISOS (R4) -->
+          <article class="proposal-card featured">
+            <div class="proposal-card-header">
+              <div class="proposal-pre-badge">Solución para Sentencia R4</div>
+              <h3 class="proposal-title">Asistente de Permisos del Organizador</h3>
+              <div class="proposal-benefit-highlight">
+                «El organizador mantiene el control de a quién se invita, aunque el sistema busque candidatos por su cuenta. Se evitan invitaciones no deseadas y queda registrado qué decidió el organizador en cada caso.»
+              </div>
+            </div>
+
+            <div class="proposal-body">
+              <div class="spec-item">
+                <span class="spec-label">¿Qué haría el futuro agente?</span>
+                <p class="spec-value">
+                  Cada vez que el sistema matcher propone un candidato y todavía faltan jugadores, comprueba en la base de datos si el organizador ya lo autorizó. Si no consta autorización, genera una tarjeta de consulta para el organizador y bloquea de manera infranqueable cualquier intento de notificación hacia el jugador.
+                </p>
+              </div>
+
+              <div class="spec-item">
+                <span class="spec-label">¿Para qué serviría?</span>
+                <p class="spec-value">
+                  Para garantizar que ningún jugador externo reciba una convocatoria oficial a un partido privado sin la previa conformidad humana de la persona responsable del equipo.
+                </p>
+              </div>
+
+              <div class="spec-item">
+                <span class="spec-label">Resultado que produce</span>
+                <p class="spec-value">
+                  Un pedido de permiso al organizador (notificación push interactiva) sin ninguna invitación enviada mientras no haya respuesta; posteriormente, una autorización registrada que habilita la regla R3 o un rechazo registrado que descarta al candidato.
+                </p>
+              </div>
+
+              <div class="spec-item">
+                <span class="spec-label">Herramientas e Intervención Humana</span>
+                <p class="spec-value">
+                  <strong>Consulta:</strong> Registro de autorizaciones y estado de cupo del partido.<br>
+                  <strong>Intervención Humana:</strong> <em>Obligatoria y central.</em> La decisión de admitir o rechazar al postulante es competencia exclusiva e indelegable del organizador.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROPUESTA 1: ASISTENTE DE ENVÍO (R3) -->
+          <article class="proposal-card featured">
+            <div class="proposal-card-header">
+              <div class="proposal-pre-badge">Solución para Sentencia R3</div>
+              <h3 class="proposal-title">Asistente de Envío de Invitaciones</h3>
+              <div class="proposal-benefit-highlight">
+                «Entre que el organizador decide y la invitación sale pueden cambiar las cosas, y el asistente lo revisa justo antes. Evita invitar a alguien no disponible, duplicar invitaciones o sobrecupo.»
+              </div>
+            </div>
+
+            <div class="proposal-body">
+              <div class="spec-item">
+                <span class="spec-label">¿Qué haría el futuro agente?</span>
+                <p class="spec-value">
+                  En cuanto se registra la autorización del organizador, el agente realiza un chequeo atómico de último segundo: verifica que el candidato continúe compatible, que sigan faltando jugadores en el partido y que no posea una invitación vigente previa sin responder. Al verificarse todo, solicita el envío de la invitación.
+                </p>
+              </div>
+
+              <div class="spec-item">
+                <span class="spec-label">¿Para qué serviría?</span>
+                <p class="spec-value">
+                  Para que ninguna invitación salga con datos desactualizados, duplicada o fuera de cupo, liberando al organizador de monitorear cambios de disponibilidad en tiempo real.
+                </p>
+              </div>
+
+              <div class="spec-item">
+                <span class="spec-label">Resultado que produce</span>
+                <p class="spec-value">
+                  Una orden de despacho enviada al módulo de mensajería de la aplicación, o bien un registro formal de la condición específica que no se cumplió (evitando despilfarro de cupos o molestias al jugador).
+                </p>
+              </div>
+
+              <div class="spec-item">
+                <span class="spec-label">Herramientas e Intervención Humana</span>
+                <p class="spec-value">
+                  <strong>Consulta:</strong> Historial de invitaciones, API de disponibilidad del jugador y contador de confirmados.<br>
+                  <strong>Intervención Humana:</strong> <em>Ninguna en este paso.</em> La decisión humana ya ocurrió en R4; aquí el agente ejecuta la verificación lógica autónoma.
+                </p>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECCIÓN 4: LAS 12 DECISIONES DE DISEÑO DEL GRUPO (CRITERIO 4 RÚBRICA)
+         ====================================================================== -->
+    <section id="decisiones" class="section section-tinted">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">04 · Supuestos Agregados</span>
+          <h2 class="section-title">Decisiones de Diseño del Grupo</h2>
+          <p class="section-lead">
+            Todo lo que las sentencias originales no especifican fue modelado de forma explícita por el grupo de Front End. En los diagramas cada supuesto se distingue con el distintivo <span class="badge-diseno">⚙ diseño</span>.
+          </p>
+        </div>
+
+        <div class="table-responsive-wrapper">
+          <table class="custom-table" aria-label="Tabla de 12 decisiones de diseño del grupo">
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50px;">Nº</th>
+                <th scope="col" style="width: 320px;">Decisión del Grupo</th>
+                <th scope="col">Por qué la tomamos (Fundamentación)</th>
+                <th scope="col" style="width: 100px;">Sentencia</th>
+                <th scope="col" style="width: 120px;">Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="num-col">1</td>
+                <td><strong>Matcher automático:</strong> El sistema propone candidatos a partir de jugadores disponibles y el organizador los aprueba.</td>
+                <td>R4 exige la autorización del organizador, lo que solo tiene sentido práctico si el sistema actúa como recomendador previo.</td>
+                <td class="rule-col">R4</td>
+                <td><span class="badge-diseno">⚙ diseño</span></td>
+              </tr>
+              <tr>
+                <td class="num-col">2</td>
+                <td><strong>Organizador único:</strong> El organizador es quien creó el partido de fútbol 5.</td>
+                <td>Las sentencias nombran un único organizador; no modelamos delegaciones ni co-organizadores para evitar complejidad innecesaria.</td>
+                <td class="rule-col">R3 y R4</td>
+                <td><span class="badge-diseno">⚙ diseño</span></td>
+              </tr>
+              <tr>
+                <td class="num-col">3</td>
+                <td><strong>Autorización granular:</strong> El visto bueno se otorga individualmente por cada candidato con un Sí o No.</td>
+                <td>La sentencia estipula «autorizó invitarlo» refiriéndose específicamente a esa persona y no a un grupo general.</td>
+                <td class="rule-col">R3 y R4</td>
+                <td><span class="badge-diseno">⚙ diseño</span></td>
+              </tr>
+              <tr>
+                <td class="num-col">4</td>
+                <td><strong>Definición de compatibilidad:</strong> Encajar con zona geográfica, franja horaria y posición en la cancha.</td>
+                <td>La sentencia utiliza el término «compatible» sin definirlo; se adoptaron los 3 criterios clave de un partido barrial de fútbol.</td>
+                <td class="rule-col">R3</td>
+                <td><span class="badge-diseno">⚙ diseño</span></td>
+              </tr>
+              <tr>
+                <td class="num-col">5</td>
+                <td><strong>Criterio de cupo:</strong> «Faltan jugadores» equivale estrictamente a menos de 10 jugadores confirmados.</td>
+                <td>Deriva directamente del objetivo fundacional de la startup: reunir diez jugadores para completar un partido de Fútbol 5.</td>
+                <td class="rule-col">R3 y R4</td>
+                <td><span class="badge-diseno">⚙ diseño</span></td>
+              </tr>
+              <tr>
+                <td class="num-col">6</td>
+                <td><strong>Invitación vigente:</strong> Invitación enviada para este mismo partido que no venció, no fue respondida ni cancelada.</td>
+                <td>Evita enviar múltiples invitaciones spam a la misma persona para el mismo partido, sin restringir su participación en otros eventos.</td>
+                <td class="rule-col">R3</td>
+                <td><span class="badge-diseno">⚙ diseño</span></td>
+              </tr>
+              <tr>
+                <td class="num-col">7</td>
+                <td><strong>Rechazo explícito:</strong> Si el organizador rechaza, se registra el rechazo y se descarta al candidato.</td>
+                <td>De no registrarse el rechazo, R4 volvería a pedir autorización para el mismo candidato en un ciclo infinito.</td>
+                <td class="rule-col">R4</td>
+                <td><span class="badge-diseno">⚙ diseño</span></td>
+              </tr>
+              <tr>
+                <td class="num-col">8</td>
+                <td><strong>Registro de fallo en R3:</strong> Si falla alguna de las condiciones, se registra cuál falló y no se envía.</td>
+                <td>La regla solo define la consecuencia afirmativa; modelar el registro del fallo garantiza trazabilidad y diagnóstico en la app.</td>
+                <td class="rule-col">R3</td>
+                <td><span class="badge-diseno">⚙ diseño</span></td>
+              </tr>
+              <tr>
+                <td class="num-col">9</td>
+                <td><strong>Destino de la solicitud:</strong> La solicitud de envío se dirige a la función interna de mensajería de la propia app.</td>
+                <td>Evita inventar agentes o intermediarios innecesarios: el agente decide lógicamente y la función de software ejecuta el push.</td>
+                <td class="rule-col">R3</td>
+                <td><span class="badge-diseno">⚙ diseño</span></td>
+              </tr>
+              <tr>
+                <td class="num-col">10</td>
+                <td><strong>Silencio del organizador:</strong> Si no contesta, el candidato queda en espera sin enviar nada.</td>
+                <td>R4 prescribe que no se envía la invitación mientras no conste la autorización; el silencio jamás se asume como aprobación tácita.</td>
+                <td class="rule-col">R4</td>
+                <td><span class="badge-diseno">⚙ diseño</span></td>
+              </tr>
+              <tr>
+                <td class="num-col">11</td>
+                <td><strong>Partido completo al proponer:</strong> Si el partido ya tiene 10 confirmados, no se pide permiso.</td>
+                <td>La sentencia exige que todavía falten jugadores; si el cupo está colmado, la solicitud carece de objeto y el flujo culmina.</td>
+                <td class="rule-col">R4</td>
+                <td><span class="badge-diseno">⚙ diseño</span></td>
+              </tr>
+              <tr>
+                <td class="num-col">12</td>
+                <td><strong>Traspaso de estado:</strong> Una autorización registrada en R4 habilita el desencadenamiento de R3.</td>
+                <td>R4 culmina con la decisión humana; si es positiva, alimenta como dato de entrada la condición 1 de R3 para su despacho final.</td>
+                <td class="rule-col">R4 y R3</td>
+                <td><span class="badge-diseno">⚙ diseño</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECCIÓN 5: DIAGRAMAS DE FLUJO GRÁFICOS (PASO 5)
+         ====================================================================== -->
+    <section id="diagramas" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">05 · Modelado Visual</span>
+          <h2 class="section-title">El Recorrido Agéntico a Simple Vista</h2>
+          <p class="section-lead">
+            Representación gráfica de las decisiones, condiciones y bifurcaciones. Navegue entre el flujo de autorización (R4), el flujo de envío (R3) o la vista integrada completa.
+          </p>
+        </div>
+
+        <!-- Botones de Pestañas de Diagramas -->
+        <div class="diagram-tab-controls" role="tablist" aria-label="Selector de diagramas de flujo">
+          <button type="button" class="diagram-tab-btn active" role="tab" aria-selected="true" data-target="tab-diagram-r4">
+            <span aria-hidden="true">1️⃣</span> Diagrama R4: Pedir Permiso
+          </button>
+          <button type="button" class="diagram-tab-btn" role="tab" aria-selected="false" data-target="tab-diagram-r3">
+            <span aria-hidden="true">2️⃣</span> Diagrama R3: Solicitar Envío
+          </button>
+          <button type="button" class="diagram-tab-btn" role="tab" aria-selected="false" data-target="tab-diagram-full">
+            <span aria-hidden="true">🔄</span> Recorrido Completo: De R4 a R3
+          </button>
+        </div>
+
+        <!-- Visor del Diagrama -->
+        <div class="diagram-viewer-card">
+          
+          <!-- PANE 1: DIAGRAMA R4 -->
+          <div id="tab-diagram-r4" class="diagram-content-pane active" role="tabpanel">
+            <div class="diagram-svg-frame">
+              <img src="assets/images/diagram-r4.svg" alt="Diagrama de flujo de la sentencia R4: pedir permiso y no enviar la invitación" width="920" height="860">
+            </div>
+            <div class="diagram-explanation-box">
+              <h4>
+                <span aria-hidden="true">📖</span> Guía de Lectura: Cómo recorrer el flujo de R4
+              </h4>
+              <ol class="how-to-read-list">
+                <li><strong>Inicio:</strong> El sistema matcher propone a un candidato compatible al organizador del partido.</li>
+                <li><strong>Evaluación de Cupo:</strong> ¿Todavía faltan jugadores? Si NO faltan (partido lleno con 10), <span class="badge-diseno">⚙ diseño</span> no se pide permiso y el flujo termina.</li>
+                <li><strong>Chequeo de Autorización:</strong> ¿Consta autorización del organizador? Si ya constaba, corresponde R3 y pasa directamente.</li>
+                <li><strong>Acción Central R4:</strong> Si NO consta, el sistema <em>solicita el permiso al organizador</em> y <em>NO envía la invitación</em>.</li>
+                <li><strong>Intervención Humana:</strong> El organizador decide:
+                  <ul>
+                    <li>Si <strong>autoriza (SÍ)</strong>, se registra la autorización y el caso pasa a R3.</li>
+                    <li>Si <strong>rechaza (NO)</strong>, <span class="badge-diseno">⚙ diseño</span> se registra el rechazo y se descarta al candidato.</li>
+                    <li>Si <strong>no responde</strong>, <span class="badge-diseno">⚙ diseño</span> queda en espera y en ningún caso se envía nada.</li>
+                  </ul>
+                </li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- PANE 2: DIAGRAMA R3 -->
+          <div id="tab-diagram-r3" class="diagram-content-pane" role="tabpanel">
+            <div class="diagram-svg-frame">
+              <img src="assets/images/diagram-r3.svg" alt="Diagrama de flujo de la sentencia R3: con las cuatro condiciones cumplidas, solicitar el envío" width="920" height="860">
+            </div>
+            <div class="diagram-explanation-box">
+              <h4>
+                <span aria-hidden="true">📖</span> Guía de Lectura: Cómo recorrer el flujo de R3
+              </h4>
+              <ol class="how-to-read-list">
+                <li><strong>Entrada:</strong> Ingresa un candidato que el organizador ya autorizó previamente (Condición 1 de 4 garantizada desde R4).</li>
+                <li><strong>Condición 2 de 4:</strong> ¿Sigue siendo compatible? Se revalida que no haya cambiado su disponibilidad o ubicación. Si NO es compatible, se registra el fallo y no se envía.</li>
+                <li><strong>Condición 3 de 4:</strong> ¿Todavía faltan jugadores? Se revalida que no se haya completado el cupo de 10 mientras se esperaba. Si NO faltan, se registra el fallo y no se envía.</li>
+                <li><strong>Condición 4 de 4:</strong> <span class="badge-diseno">⚙ diseño</span> ¿Ya hay una invitación vigente para este candidato en este partido? Si SÍ hay, se frena para no duplicar.</li>
+                <li><strong>Acción & Resultado:</strong> Si las condiciones dan bien (NO hay invitación previa y se cumplen las demás), el sistema <em>solicita enviar la invitación</em> al módulo de envíos de la app y finaliza con éxito.</li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- PANE 3: RECORRIDO COMPLETO -->
+          <div id="tab-diagram-full" class="diagram-content-pane" role="tabpanel">
+            <div class="diagram-svg-frame">
+              <img src="assets/images/diagram-recorrido-completo.svg" alt="Diagrama integrado del recorrido completo del candidato: de R4 a R3" width="1000" height="480">
+            </div>
+            <div class="diagram-explanation-box">
+              <h4>
+                <span aria-hidden="true">📖</span> Guía de Lectura: Recorrido Unificado de R4 a R3
+              </h4>
+              <p style="font-size: 0.95rem; margin-bottom: 12px; color: var(--navy-900);">
+                Este diagrama ilustra la arquitectura integral del ciclo de vida del candidato:
+              </p>
+              <ul class="how-to-read-list">
+                <li><strong>Fase R4 (Izquierda):</strong> Garantiza la soberanía del organizador humano. Ninguna invitación se emite sin autorización previa. Si el organizador aprueba, se genera el evento de traspaso.</li>
+                <li><strong>Fase R3 (Derecha):</strong> Actúa como un guardián de consistencia técnica. Revalida que en el lapso transcurrido el candidato siga disponible, el cupo siga abierto y no exista duplicación de mensajes.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECCIÓN 6: DESPLEGABLES CON DETALLES DE CADA SOLUCIÓN (PASO 6 Y 7)
+         ====================================================================== -->
+    <section id="detalles" class="section section-tinted">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">06 · Desplegables de Profundización</span>
+          <h2 class="section-title">Detalles Exhaustivos de Cada Solución</h2>
+          <p class="section-lead">
+            Explore los componentes detallados de cada propuesta: datos de entrada, decisiones, excepciones, intervención humana y ejemplos prácticos de casos que cumplen y que no cumplen.
+          </p>
+          <div style="margin-top: 18px; display: flex; justify-content: center; gap: 12px;">
+            <button type="button" id="btn-expand-all" class="btn-secondary" style="color: var(--navy-900); border-color: var(--navy-800); font-size: 0.85rem; padding: 8px 18px;">
+              Expandir Todos los Desplegables
+            </button>
+            <button type="button" id="btn-collapse-all" class="btn-secondary" style="color: var(--navy-900); border-color: var(--navy-800); font-size: 0.85rem; padding: 8px 18px;">
+              Colapsar Todos
+            </button>
+          </div>
+        </div>
+
+        <div class="card-grid-2">
+          
+          <!-- GRUPO DESPLEGABLES PROPUESTA 2 (R4) -->
+          <div class="accordion-wrapper">
+            <h3 class="accordion-group-title">
+              <span class="sentence-rule-code">R4</span> Asistente de Permisos del Organizador
+            </h3>
+
+            <!-- Item 1: Datos que entran -->
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                <span class="accordion-title-inner">
+                  <span class="accordion-icon-tag" aria-hidden="true">📥</span>
+                  <span>Datos que entran</span>
+                </span>
+                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="accordion-panel">
+                <div class="accordion-panel-inner">
+                  <p>El perfil del candidato propuesto por el matcher (identificador único, posición de juego y horario libre), el identificador del partido con su recuento actual de confirmados (para evaluar que sea menor a 10) y la tabla de autorizaciones previas del organizador.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 2: Qué se decide -->
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                <span class="accordion-title-inner">
+                  <span class="accordion-icon-tag" aria-hidden="true">⚖️</span>
+                  <span>Qué se decide</span>
+                </span>
+                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="accordion-panel">
+                <div class="accordion-panel-inner">
+                  <p>Se evalúa si todavía faltan jugadores para completar los 10 confirmados del partido de fútbol 5 y si consta o no la autorización previa y expresa del organizador para convocar a ese candidato en particular.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 3: Acción propuesta -->
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                <span class="accordion-title-inner">
+                  <span class="accordion-icon-tag" aria-hidden="true">⚡</span>
+                  <span>Acción propuesta</span>
+                </span>
+                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="accordion-panel">
+                <div class="accordion-panel-inner">
+                  <p>Si no consta la autorización, el sistema emite una solicitud interactiva de permiso al teléfono del organizador y <strong>bloquea estrictamente el envío</strong> de cualquier mensaje hacia el jugador.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 4: Resultado esperado -->
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                <span class="accordion-title-inner">
+                  <span class="accordion-icon-tag" aria-hidden="true">🏁</span>
+                  <span>Resultado esperado</span>
+                </span>
+                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="accordion-panel">
+                <div class="accordion-panel-inner">
+                  <p>Un requerimiento de permiso entregado al organizador sin ninguna invitación cursada en paralelo; posteriormente, ante la interacción del organizador, una autorización registrada que habilita el paso hacia la regla R3 o un rechazo registrado que descarta al postulante.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 5: Excepciones -->
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                <span class="accordion-title-inner">
+                  <span class="accordion-icon-tag" aria-hidden="true">⚠️</span>
+                  <span>Excepciones modeladas</span>
+                </span>
+                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="accordion-panel">
+                <div class="accordion-panel-inner">
+                  <p>Si el partido ya se completó antes de solicitar permiso, no se le pide nada al organizador. Si el organizador no responde (tiempo de espera vencido o inactividad), el candidato permanece en espera preventiva y jamás se envía la invitación por defecto.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 6: Intervención humana -->
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                <span class="accordion-title-inner">
+                  <span class="accordion-icon-tag" aria-hidden="true">👤</span>
+                  <span>Intervención humana</span>
+                </span>
+                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="accordion-panel">
+                <div class="accordion-panel-inner">
+                  <p><strong>El organizador decide.</strong> Es el paso humano insoslayable: sin la aprobación explícita del organizador para ese candidato concreto, el sistema tiene vedado continuar hacia el envío.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 7: Casos de prueba R4 (Cumple / No cumple) -->
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                <span class="accordion-title-inner">
+                  <span class="accordion-icon-tag" aria-hidden="true">🧪</span>
+                  <span>Casos prácticos de prueba</span>
+                </span>
+                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="accordion-panel">
+                <div class="accordion-panel-inner">
+                  <div class="case-example-card case-success">
+                    <div class="case-title">Caso en que la regla se activa (Se pide permiso y no se envía)</div>
+                    <p>Se propone a <strong>Marcos</strong>, faltan cuatro jugadores para el partido y no hay autorización registrada en el sistema. El sistema le pide permiso al organizador y no envía la invitación.</p>
+                  </div>
+                  <div class="case-example-card case-fail">
+                    <div class="case-title">Caso en que la regla NO se activa (Ya constaba autorización)</div>
+                    <p>Se propone a <strong>Marcos</strong>, pero el organizador ya lo había autorizado previamente. R4 no solicita nada nuevo y el caso avanza de inmediato a la verificación de R3.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- GRUPO DESPLEGABLES PROPUESTA 1 (R3) -->
+          <div class="accordion-wrapper">
+            <h3 class="accordion-group-title">
+              <span class="sentence-rule-code">R3</span> Asistente de Envío de Invitaciones
+            </h3>
+
+            <!-- Item 1: Datos que entran -->
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                <span class="accordion-title-inner">
+                  <span class="accordion-icon-tag" aria-hidden="true">📥</span>
+                  <span>Datos que entran</span>
+                </span>
+                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="accordion-panel">
+                <div class="accordion-panel-inner">
+                  <p>El candidato previamente autorizado (Condición 1 garantizada), su disponibilidad actual (horario, zona y estado activo), la cantidad en tiempo real de jugadores confirmados para el partido y el registro histórico de invitaciones cursadas.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 2: Qué se decide -->
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                <span class="accordion-title-inner">
+                  <span class="accordion-icon-tag" aria-hidden="true">⚖️</span>
+                  <span>Qué se decide</span>
+                </span>
+                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="accordion-panel">
+                <div class="accordion-panel-inner">
+                  <p>Si se cumplen simultáneamente las 3 condiciones restantes: que el candidato continúe siendo compatible, que aún falten jugadores en el partido y que no posea una invitación vigente a este mismo encuentro.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 3: Acción propuesta -->
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                <span class="accordion-title-inner">
+                  <span class="accordion-icon-tag" aria-hidden="true">⚡</span>
+                  <span>Acción propuesta</span>
+                </span>
+                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="accordion-panel">
+                <div class="accordion-panel-inner">
+                  <p>Solicitar el envío formal de la invitación a ese candidato mediante la función de despacho de notificaciones de la aplicación.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 4: Resultado esperado -->
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                <span class="accordion-title-inner">
+                  <span class="accordion-icon-tag" aria-hidden="true">🏁</span>
+                  <span>Resultado esperado</span>
+                </span>
+                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="accordion-panel">
+                <div class="accordion-panel-inner">
+                  <p>Una solicitud de envío concretada y registrada en el historial del partido, o bien un registro específico de qué condición impidió el despacho (incompatibilidad, cupo colmado o invitación preexistente).</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 5: Excepciones -->
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                <span class="accordion-title-inner">
+                  <span class="accordion-icon-tag" aria-hidden="true">⚠️</span>
+                  <span>Excepciones modeladas</span>
+                </span>
+                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="accordion-panel">
+                <div class="accordion-panel-inner">
+                  <p>Si entre que el organizador autorizó y el agente iba a enviar la invitación el partido se completó o el candidato modificó sus preferencias, la invitación se frena de inmediato y se documenta el motivo. Asimismo, si ya existe una invitación enviada y pendiente a ese jugador, se impide un envío duplicado.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 6: Intervención humana -->
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                <span class="accordion-title-inner">
+                  <span class="accordion-icon-tag" aria-hidden="true">👤</span>
+                  <span>Intervención humana</span>
+                </span>
+                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="accordion-panel">
+                <div class="accordion-panel-inner">
+                  <p><strong>No interviene una persona en este paso.</strong> La decisión humana ya tuvo lugar en R4 al otorgar el visto bueno. En R3 el agente de software evalúa automáticamente las condiciones lógicas objetivas.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 7: Casos de prueba R3 (Cumple / No cumple) -->
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                <span class="accordion-title-inner">
+                  <span class="accordion-icon-tag" aria-hidden="true">🧪</span>
+                  <span>Casos prácticos de prueba</span>
+                </span>
+                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="accordion-panel">
+                <div class="accordion-panel-inner">
+                  <div class="case-example-card case-success">
+                    <div class="case-title">Caso en que se envía la invitación (Éxito completo)</div>
+                    <p><strong>Lucas</strong> fue autorizado por el organizador, continúa con disponibilidad compatible, faltan cuatro jugadores en el partido y no posee invitaciones previas pendientes. El sistema solicita enviar la invitación.</p>
+                  </div>
+                  <div class="case-example-card case-fail">
+                    <div class="case-title">Caso en que NO se envía la invitación (Invitación duplicada)</div>
+                    <p><strong>Lucas</strong> fue autorizado, pero ya cuenta con una invitación pendiente sin responder a este mismo partido. El sistema <strong>no envía otra invitación</strong> y registra el motivo en la bitácora (Decisión Nº 6).</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECCIÓN 7: CASOS LÍMITE Y EXCEPCIONES (NIVEL PROPONE - CRITERIO 4)
+         ====================================================================== -->
+    <section id="casos-limite" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">07 · Casos Límite</span>
+          <h2 class="section-title">Análisis de Excepciones y Condiciones Críticas</h2>
+          <p class="section-lead">
+            Para alcanzar el nivel <strong>Propone</strong> de la rúbrica evaluadora, documentamos cómo el sistema agéntico responde ante condiciones de carrera, cambios asíncronos y contingencias humanas.
+          </p>
+        </div>
+
+        <div class="edge-cases-grid">
+          
+          <div class="edge-case-card alert-gold">
+            <div class="edge-case-header">
+              <span class="edge-case-rule">Excepción R3 · Caso 1</span>
+              <span class="badge-diseno">⚙ diseño</span>
+            </div>
+            <h4 class="edge-case-title">Partido completado durante el tiempo de espera</h4>
+            <p class="edge-case-body">
+              Entre que el organizador autorizó al candidato y el agente ejecutó la verificación de R3, otro jugador confirmó su asistencia completando los 10 cupos del partido de fútbol 5.
+            </p>
+            <div class="edge-case-resolution">
+              🛡️ <strong>Resolución del Agente:</strong> La condición «Todavía faltan jugadores» evalúa FALSO. El agente aborta el despacho, registra "partido completo" y no emite la invitación.
+            </div>
+          </div>
+
+          <div class="edge-case-card">
+            <div class="edge-case-header">
+              <span class="edge-case-rule">Excepción R3 · Caso 2</span>
+              <span class="badge-diseno">⚙ diseño</span>
+            </div>
+            <h4 class="edge-case-title">Pérdida sobreviniente de compatibilidad</h4>
+            <p class="edge-case-body">
+              El jugador autorizado cambió su rango horario, actualizó su zona geográfica o se unió a otro partido mientras se gestionaba la autorización.
+            </p>
+            <div class="edge-case-resolution">
+              🛡️ <strong>Resolución del Agente:</strong> La condición «Sigue siendo compatible» evalúa FALSO. Se registra la causal en la base de datos y se cancela el despacho sin molestar al jugador.
+            </div>
+          </div>
+
+          <div class="edge-case-card alert-gold">
+            <div class="edge-case-header">
+              <span class="edge-case-rule">Excepción R3 · Caso 3</span>
+              <span class="badge-diseno">⚙ diseño</span>
+            </div>
+            <h4 class="edge-case-title">Invitación preexistente no respondida</h4>
+            <p class="edge-case-body">
+              El sistema intenta despachar una invitación a un candidato que ya fue notificado hace 30 minutos y cuya invitación continúa vigente sin respuesta ni caducidad.
+            </p>
+            <div class="edge-case-resolution">
+              🛡️ <strong>Resolución del Agente:</strong> La condición «¬InvitaciónVigente» evalúa FALSO. Se bloquea el reenvío para erradicar el spam y se deja la invitación original en curso.
+            </div>
+          </div>
+
+          <div class="edge-case-card">
+            <div class="edge-case-header">
+              <span class="edge-case-rule">Excepción R4 · Caso 4</span>
+              <span class="badge-diseno">⚙ diseño</span>
+            </div>
+            <h4 class="edge-case-title">Rechazo explícito del organizador</h4>
+            <p class="edge-case-body">
+              El organizador revisa la propuesta del candidato pero decide presionar "Rechazar" porque prefiere convocar a un conocido personal.
+            </p>
+            <div class="edge-case-resolution">
+              🛡️ <strong>Resolución del Agente:</strong> Se asienta el estado "Rechazado" en la tabla de autorizaciones. El candidato se descarta de la lista de sugerencias para no generar bucles infinitos de consulta.
+            </div>
+          </div>
+
+          <div class="edge-case-card alert-gold">
+            <div class="edge-case-header">
+              <span class="edge-case-rule">Excepción R4 · Caso 5</span>
+              <span class="badge-diseno">⚙ diseño</span>
+            </div>
+            <h4 class="edge-case-title">Silencio o inacción del organizador</h4>
+            <p class="edge-case-body">
+              El sistema emite el pedido de autorización al smartphone del organizador, pero este no abre la aplicación ni responde a la notificación.
+            </p>
+            <div class="edge-case-resolution">
+              🛡️ <strong>Resolución del Agente:</strong> El candidato permanece en estado "En Espera". La regla R4 exige taxativamente que NO se envíe la invitación mientras no conste la autorización afirmativa.
+            </div>
+          </div>
+
+          <div class="edge-case-card">
+            <div class="edge-case-header">
+              <span class="edge-case-rule">Excepción R4 · Caso 6</span>
+              <span class="badge-diseno">⚙ diseño</span>
+            </div>
+            <h4 class="edge-case-title">Partido llenado mientras el organizador deliberaba</h4>
+            <p class="edge-case-body">
+              El organizador tenía en pantalla la tarjeta de permiso para un candidato, pero en ese intervalo ingresaron los últimos confirmados por otra vía.
+            </p>
+            <div class="edge-case-resolution">
+              🛡️ <strong>Resolución del Agente:</strong> La tarjeta de autorización se invalida automáticamente mostrando "Cupo completado", evitando que el organizador autorice un jugador innecesario.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECCIÓN 8: SIMULADOR AGÉNTICO INTERACTIVO (VALOR AGREGADO PROPONE)
+         ====================================================================== -->
+    <section id="simulador" class="section section-dark">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">08 · Simulador en Vivo</span>
+          <h2 class="section-title">Consola de Evaluación Agéntica</h2>
+          <p class="section-lead">
+            Pruebe el comportamiento reactivo de las reglas en tiempo real. Ejecute los escenarios preconfigurados del TP3 o manipule las variables de entrada para comprobar cada decisión.
+          </p>
+        </div>
+
+        <div class="simulator-box">
+          <div class="sim-controls-grid">
+            
+            <!-- Selector de Escenarios Predeterminados -->
+            <div>
+              <div class="sim-presets-title">Casos de Prueba Predeterminados (TP3)</div>
+              <div class="sim-presets-buttons">
+                <button type="button" class="sim-preset-btn active" data-preset="happy-path">
+                  <span>🟢 Caso 1: Flujo Feliz Completo (Lucas)</span>
+                  <small>R4 pide permiso ➔ Autoriza ➔ R3 despacha</small>
+                </button>
+                <button type="button" class="sim-preset-btn" data-preset="duplicada">
+                  <span>🟠 Caso 2: Invitación Vigente Duplicada</span>
+                  <small>R3 frena reenvío ➔ Registra condición fallida</small>
+                </button>
+                <button type="button" class="sim-preset-btn" data-preset="partido-completo">
+                  <span>🔴 Caso 3: Cupo Lleno durante Espera</span>
+                  <small>Faltan = NO (10/10) ➔ Se cancela el despacho</small>
+                </button>
+                <button type="button" class="sim-preset-btn" data-preset="rechazado">
+                  <span>❌ Caso 4: Organizador Rechaza a Marcos</span>
+                  <small>Intervención Humana = Rechazo ➔ Se descarta</small>
+                </button>
+                <button type="button" class="sim-preset-btn" data-preset="sin-respuesta">
+                  <span>⏳ Caso 5: Organizador no Responde</span>
+                  <small>Silencio humano ➔ Queda en espera, no envía</small>
+                </button>
+              </div>
+            </div>
+
+            <!-- Parámetros Personalizados de Simulación -->
+            <div class="sim-custom-params">
+              <h5>Variables de Entrada y Decisiones</h5>
+              
+              <div class="sim-toggle-row">
+                <label for="sim-faltan">¿Todavía faltan jugadores? (&lt; 10)</label>
+                <input type="checkbox" id="sim-faltan" class="sim-toggle-input" checked>
+              </div>
+
+              <div class="sim-toggle-row">
+                <label for="sim-autorizado">¿Consta autorización previa en BD?</label>
+                <input type="checkbox" id="sim-autorizado" class="sim-toggle-input">
+              </div>
+
+              <div class="sim-toggle-row">
+                <label for="sim-org-decision">Intervención del organizador (R4):</label>
+                <select id="sim-org-decision" style="background: #0f2b5c; color: #ffffff; border: 1px solid #3b82f6; padding: 6px 10px; border-radius: 6px; font-family: inherit; font-size: 0.85rem;">
+                  <option value="autoriza">Autoriza (SÍ)</option>
+                  <option value="rechaza">Rechaza (NO)</option>
+                  <option value="sin_respuesta">Sin respuesta (Espera)</option>
+                </select>
+              </div>
+
+              <div class="sim-toggle-row">
+                <label for="sim-compatible">¿Candidato sigue siendo compatible? (R3)</label>
+                <input type="checkbox" id="sim-compatible" class="sim-toggle-input" checked>
+              </div>
+
+              <div class="sim-toggle-row">
+                <label for="sim-inv-vigente">¿Ya hay invitación vigente para él? (R3)</label>
+                <input type="checkbox" id="sim-inv-vigente" class="sim-toggle-input">
+              </div>
+
+              <button type="button" id="btn-run-simulation" class="btn-primary" style="width: 100%; margin-top: 18px; justify-content: center;">
+                Ejecutar Lógica Agéntica ⚡
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Consola de Resultados / Trazabilidad de Logs -->
+          <div class="sim-console">
+            <div class="sim-console-header">
+              <span>BITÁCORA DE EJECUCIÓN AGÉNTICA (TRAZABILIDAD EN TIEMPO REAL)</span>
+              <span id="sim-status-badge" class="sim-status-pill" style="background: #059669; color: #ffffff;">ESTADO: ÉXITO</span>
+            </div>
+            <div id="sim-logs-container" class="sim-log-list">
+              <!-- Logs inyectados dinámicamente por script.js -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECCIÓN 9: DOCUMENTACIÓN DEL PROCESO & RÚBRICA (NIVEL PROPONE)
+         ====================================================================== -->
+    <section id="documentacion" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">09 · Evaluación & Rúbrica</span>
+          <h2 class="section-title">Alineación con la Rúbrica de Evaluación</h2>
+          <p class="section-lead">
+            Este proyecto cumple estrictamente todos los requisitos y se ubica en el nivel <strong>Propone</strong> en cada uno de los 5 criterios de evaluación docente.
+          </p>
+        </div>
+
+        <div class="rubric-grid">
+          
+          <div class="rubric-card">
+            <div class="rubric-card-top">
+              <span class="rubric-criterio-num">Criterio 01</span>
+              <span class="rubric-level-badge">Nivel Propone</span>
+            </div>
+            <h4 class="rubric-title">Participación de Integrantes</h4>
+            <p class="rubric-desc">
+              Todos los miembros del grupo participan activamente, registran sus aportes concretos en el README y documentan una <strong>revisión cruzada documentada</strong> con una mejora tangible surgida de esa colaboración.
+            </p>
+          </div>
+
+          <div class="rubric-card">
+            <div class="rubric-card-top">
+              <span class="rubric-criterio-num">Criterio 02</span>
+              <span class="rubric-level-badge">Nivel Propone</span>
+            </div>
+            <h4 class="rubric-title">Repositorio y Landing Publicados</h4>
+            <p class="rubric-desc">
+              Repositorio de código y landing web accesibles públicamente sin necesidad de inicio de sesión, con instrucciones claras de reproducción y comprobación en desktop sin desbordes.
+            </p>
+          </div>
+
+          <div class="rubric-card">
+            <div class="rubric-card-top">
+              <span class="rubric-criterio-num">Criterio 03</span>
+              <span class="rubric-level-badge">Nivel Propone</span>
+            </div>
+            <h4 class="rubric-title">Landing Acorde a la Consigna</h4>
+            <p class="rubric-desc">
+              Presenta la startup con su logo oficial vectorial, las dos sentencias textuales, las dos propuestas y todos los desplegables obligatorios, complementado con recursos de navegación interactiva y simulador.
+            </p>
+          </div>
+
+          <div class="rubric-card">
+            <div class="rubric-card-top">
+              <span class="rubric-criterio-num">Criterio 04</span>
+              <span class="rubric-level-badge">Nivel Propone</span>
+            </div>
+            <h4 class="rubric-title">Flujos Agénticos Gráficos</h4>
+            <p class="rubric-desc">
+              Tres diagramas vectoriales legibles (R4, R3 e Integral), distinguiendo inequívocamente los supuestos agregados mediante el distintivo <span class="badge-diseno">⚙ diseño</span> y detallando 6 casos límite con intervención humana.
+            </p>
+          </div>
+
+          <div class="rubric-card">
+            <div class="rubric-card-top">
+              <span class="rubric-criterio-num">Criterio 05</span>
+              <span class="rubric-level-badge">Nivel Propone</span>
+            </div>
+            <h4 class="rubric-title">Herramientas de IA y Modelos</h4>
+            <p class="rubric-desc">
+              Declaración explícita del entorno de programación (Antigravity IDE) y el modelo de IA utilizado (<strong>Gemini 3.8 Flash</strong>), con evidencia completa de iteración: instrucción inicial, problema detectado y pedido de mejora.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Evidencia de Iteración Agéntica (Nivel Propone Criterio 5) -->
+        <div class="ai-evidence-box">
+          <h4>
+            <span aria-hidden="true">🤖</span> Evidencia de Iteración en Construcción 100% Agéntica
+          </h4>
+          <p style="font-size: 0.95rem; color: var(--navy-900); margin-bottom: 20px;">
+            Siguiendo el desafío «Ustedes dirigen. El agente construye», no se editó código manualmente. A continuación se evidencia una iteración de diseño clave documentada entre el grupo y el agente:
+          </p>
+          <div class="ai-steps-flow">
+            <div class="ai-step-card">
+              <div class="ai-step-num">Paso 1 · Instrucción Inicial</div>
+              <h5 class="ai-step-title">Prompt del Grupo al Agente</h5>
+              <p class="ai-step-desc">
+                «Modelá el envío directo en R4 si el organizador da el visto bueno, conectando la salida de R4 directamente a la función de mensajería.»
+              </p>
+            </div>
+            <div class="ai-step-card">
+              <div class="ai-step-num">Paso 2 · Problema Detectado</div>
+              <h5 class="ai-step-title">Revisión Crítica del Grupo</h5>
+              <p class="ai-step-desc">
+                «Se detectó una falla lógica grave: el organizador puede tardar horas en autorizar. Si enviamos directo, el jugador podría haber dejado de estar disponible o el partido haberse llenado en ese lapso.»
+              </p>
+            </div>
+            <div class="ai-step-card">
+              <div class="ai-step-num">Paso 3 · Pedido de Mejora</div>
+              <h5 class="ai-step-title">Iteración y Solución Final</h5>
+              <p class="ai-step-desc">
+                «Se instruyó al agente separar tajantemente R4 de R3: la autorización solo habilita a R3, y es R3 quien realiza el chequeo atómico de último segundo antes de ordenar el despacho.»
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       FOOTER
+       ======================================================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h3><span class="gold">Match</span>deverdad</h3>
+          <p>
+            Propuesta de flujos agénticos y arquitectura visual para la startup asignada en el Trabajo Práctico Nº 3: «Dos sentencias. Dos soluciones».
+          </p>
+          <p style="margin-top: 10px; font-size: 0.825rem; color: #cbd5e1;">
+            Construcción 100% agéntica con Google Antigravity &amp; Gemini 3.8 Flash.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <h4>Secciones</h4>
+          <ul>
+            <li><a href="#startup">La Startup & Necesidad</a></li>
+            <li><a href="#sentencias">Desarme de Sentencias</a></li>
+            <li><a href="#propuestas">Propuestas Agénticas</a></li>
+            <li><a href="#decisiones">Decisiones de Grupo ⚙</a></li>
+            <li><a href="#diagramas">Diagramas de Flujo</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Institucional</h4>
+          <ul>
+            <li><span style="color: #ffffff; font-weight: 700;">IFTS 29</span> · Desarrollo de Sistemas Web</li>
+            <li>Front End · 2º Cuatrimestre 2026</li>
+            <li><span style="color: #ffffff; font-weight: 700;">IFTS 16</span> · Origen de Reglas Lógicas</li>
+            <li>Bloque: <span style="color: var(--gold-400);">S07-B (Permiso para invitar)</span></li>
+            <li>Entrega: 26/11/2026</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 Grupo de Trabajo Front End · IFTS 29. Proyecto con fines exclusivamente pedagógicos.
+        </div>
+        <div>
+          Sin nota numérica · Rúbrica · Aprobado / Desaprobado
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>

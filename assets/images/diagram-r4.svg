@@ -1,0 +1,209 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 860" width="100%" height="100%">
+  <defs>
+    <style>
+      .title { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 20px; font-weight: 700; fill: #0b2347; }
+      .subtitle { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 13px; fill: #556987; }
+      .node-text { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 13.5px; font-weight: 600; text-anchor: middle; dominant-baseline: central; }
+      .badge-text { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 11px; font-weight: 700; fill: #854d0e; }
+      .edge-label { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 12px; font-weight: 700; fill: #0b2347; text-anchor: middle; dominant-baseline: central; }
+      .legend-text { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 11.5px; fill: #475569; font-weight: 600; }
+    </style>
+    
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0d3b66" />
+    </marker>
+    <marker id="arrow-gold" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#b45309" />
+    </marker>
+  </defs>
+
+  <!-- Background Card -->
+  <rect x="0" y="0" width="920" height="860" rx="16" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" />
+
+  <!-- Title & Subtitle -->
+  <text x="460" y="40" text-anchor="middle" class="title">R4 · Si no consta autorización, pedir el permiso y no enviar</text>
+  <text x="460" y="64" text-anchor="middle" class="subtitle">Hay un candidato propuesto, todavía faltan jugadores y no consta autorización del organizador para invitarlo.</text>
+
+  <!-- Node 1: Inicio -->
+  <g id="r4-node-1" transform="translate(460, 105)">
+    <rect x="-170" y="-22" width="340" height="44" rx="22" fill="#0f2b5c" />
+    <text x="0" y="-3" class="node-text" fill="#93c5fd" font-size="11">Inicio</text>
+    <text x="0" y="11" class="node-text" fill="#ffffff">El sistema propone un candidato al organizador</text>
+  </g>
+
+  <!-- Edge: 1 to 2 -->
+  <line x1="460" y1="127" x2="460" y2="162" stroke="#0d3b66" stroke-width="2.5" marker-end="url(#arrow)" />
+
+  <!-- Node 2: Datos de Entrada (Parallelogram) -->
+  <g id="r4-node-2" transform="translate(460, 185)">
+    <polygon points="-230,-22 250,-22 220,22 -260,22" fill="#eff6ff" stroke="#93c5fd" stroke-width="2" />
+    <text x="-5" y="-5" class="node-text" fill="#1e40af" font-size="11">Datos de entrada</text>
+    <text x="-5" y="10" class="node-text" fill="#0f2b5c" font-size="12.5">candidato propuesto · jugadores confirmados · registro de autorizaciones</text>
+  </g>
+
+  <!-- Edge: 2 to 3 -->
+  <line x1="460" y1="207" x2="460" y2="242" stroke="#0d3b66" stroke-width="2.5" marker-end="url(#arrow)" />
+
+  <!-- Node 3: ¿Todavía faltan jugadores? (Diamond) -->
+  <g id="r4-node-3" transform="translate(460, 280)">
+    <polygon points="0,-36 150,0 0,36 -150,0" fill="#fef08a" stroke="#eab308" stroke-width="2.5" />
+    <text x="0" y="0" class="node-text" fill="#0f2b5c" font-weight="700">¿Todavía faltan jugadores?</text>
+  </g>
+
+  <!-- Edge: Node 3 NO -> Right (Partido completo) -->
+  <line x1="610" y1="280" x2="685" y2="280" stroke="#0d3b66" stroke-width="2" marker-end="url(#arrow)" />
+  <rect x="625" y="267" width="34" height="18" rx="4" fill="#ffffff" stroke="#cbd5e1" />
+  <text x="642" y="276" class="edge-label">NO</text>
+
+  <!-- Node 3-NO: Partido completo -->
+  <g id="r4-node-3no" transform="translate(775, 280)">
+    <rect x="-85" y="-22" width="170" height="44" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" />
+    <text x="0" y="-4" class="node-text" fill="#334155" font-size="12">Partido completo:</text>
+    <text x="0" y="12" class="node-text" fill="#334155" font-size="12">no se pide permiso</text>
+    <!-- Badge diseño -->
+    <rect x="25" y="-32" width="60" height="18" rx="9" fill="#fef08a" stroke="#eab308" stroke-width="1" />
+    <text x="55" y="-22" class="badge-text" text-anchor="middle" dominant-baseline="central">⚙ diseño</text>
+  </g>
+
+  <!-- Edge: Partido Completo -> Fin -->
+  <line x1="775" y1="302" x2="775" y2="330" stroke="#0d3b66" stroke-width="2" marker-end="url(#arrow)" />
+  <g id="r4-node-fin1" transform="translate(775, 345)">
+    <rect x="-40" y="-14" width="80" height="28" rx="14" fill="#0f2b5c" />
+    <text x="0" y="0" class="node-text" fill="#ffffff" font-size="12">Fin</text>
+  </g>
+
+  <!-- Edge: Node 3 SÍ -> Down to Node 4 -->
+  <line x1="460" y1="316" x2="460" y2="360" stroke="#0d3b66" stroke-width="2.5" marker-end="url(#arrow)" />
+  <rect x="444" y="327" width="32" height="18" rx="4" fill="#ffffff" stroke="#cbd5e1" />
+  <text x="460" y="336" class="edge-label">SÍ</text>
+
+  <!-- Node 4: ¿Consta autorización del organizador? (Diamond) -->
+  <g id="r4-node-4" transform="translate(460, 400)">
+    <polygon points="0,-36 150,0 0,36 -150,0" fill="#fef08a" stroke="#eab308" stroke-width="2.5" />
+    <text x="0" y="-7" class="node-text" fill="#0f2b5c" font-size="12.5" font-weight="700">¿Consta autorización</text>
+    <text x="0" y="10" class="node-text" fill="#0f2b5c" font-size="12.5" font-weight="700">del organizador?</text>
+  </g>
+
+  <!-- Edge: Node 4 SÍ -> Right (Ya está autorizado) -->
+  <line x1="610" y1="400" x2="685" y2="400" stroke="#0d3b66" stroke-width="2" marker-end="url(#arrow)" />
+  <rect x="628" y="387" width="28" height="18" rx="4" fill="#ffffff" stroke="#cbd5e1" />
+  <text x="642" y="396" class="edge-label">SÍ</text>
+
+  <!-- Node 4-SI: Ya está autorizado -->
+  <g id="r4-node-4si" transform="translate(775, 400)">
+    <rect x="-85" y="-22" width="170" height="44" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5" />
+    <text x="0" y="-4" class="node-text" fill="#1e3a8a" font-size="12">Ya está autorizado:</text>
+    <text x="0" y="12" class="node-text" fill="#1e3a8a" font-size="12">corresponde R3</text>
+  </g>
+
+  <!-- Edge: Ya autorizado -> Pasa a R3 -->
+  <line x1="775" y1="422" x2="775" y2="455" stroke="#0d3b66" stroke-width="2" marker-end="url(#arrow)" />
+  <g id="r4-node-pasarr3" transform="translate(775, 472)">
+    <rect x="-60" y="-16" width="120" height="32" rx="16" fill="#1d4ed8" />
+    <text x="0" y="0" class="node-text" fill="#ffffff" font-size="13">Pasa a R3</text>
+  </g>
+
+  <!-- Edge: Node 4 NO -> Down to Node 5 -->
+  <line x1="460" y1="436" x2="460" y2="480" stroke="#0d3b66" stroke-width="2.5" marker-end="url(#arrow)" />
+  <rect x="443" y="447" width="34" height="18" rx="4" fill="#ffffff" stroke="#cbd5e1" />
+  <text x="460" y="456" class="edge-label">NO</text>
+
+  <!-- Node 5: Solicita permiso y NO envía (Acción central) -->
+  <g id="r4-node-5" transform="translate(460, 515)">
+    <rect x="-215" y="-28" width="430" height="56" rx="10" fill="#fefce8" stroke="#eab308" stroke-width="3" />
+    <text x="0" y="-6" class="node-text" fill="#0f2b5c" font-size="14.5" font-weight="700">El sistema solicita el permiso al organizador</text>
+    <text x="0" y="14" class="node-text" fill="#b45309" font-size="14" font-weight="700">y NO envía la invitación</text>
+  </g>
+
+  <!-- Edge: 5 to 6 (Intervención humana) -->
+  <line x1="460" y1="543" x2="460" y2="585" stroke="#0d3b66" stroke-width="2.5" marker-end="url(#arrow)" />
+
+  <!-- Node 6: El organizador decide (Intervención humana - dashed) -->
+  <g id="r4-node-6" transform="translate(460, 615)">
+    <rect x="-110" y="-25" width="220" height="50" rx="8" fill="#ffffff" stroke="#475569" stroke-width="2.2" stroke-dasharray="6,4" />
+    <text x="0" y="-5" class="node-text" fill="#475569" font-size="11">Intervención humana</text>
+    <text x="0" y="12" class="node-text" fill="#0f2b5c" font-weight="700">El organizador decide</text>
+  </g>
+
+  <!-- Branch 1: Left -> Sin respuesta -->
+  <path d="M 350 615 L 205 615" stroke="#0d3b66" stroke-width="2" marker-end="url(#arrow)" />
+  <rect x="225" y="602" width="90" height="20" rx="4" fill="#ffffff" stroke="#cbd5e1" />
+  <text x="270" y="612" class="edge-label" font-size="11">Sin respuesta</text>
+
+  <!-- Node 6-SinRespuesta -->
+  <g id="r4-node-sinresp" transform="translate(110, 615)">
+    <rect x="-95" y="-24" width="190" height="48" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" />
+    <text x="0" y="-6" class="node-text" fill="#334155" font-size="11.5">Sin respuesta: queda en</text>
+    <text x="0" y="11" class="node-text" fill="#334155" font-size="11.5">espera y no se envía nada</text>
+    <rect x="35" y="-34" width="60" height="18" rx="9" fill="#fef08a" stroke="#eab308" stroke-width="1" />
+    <text x="65" y="-24" class="badge-text" text-anchor="middle" dominant-baseline="central">⚙ diseño</text>
+  </g>
+  <line x1="110" y1="639" x2="110" y2="675" stroke="#0d3b66" stroke-width="2" marker-end="url(#arrow)" />
+  <g id="r4-node-fin2" transform="translate(110, 692)">
+    <rect x="-40" y="-14" width="80" height="28" rx="14" fill="#0f2b5c" />
+    <text x="0" y="0" class="node-text" fill="#ffffff" font-size="12">Fin</text>
+  </g>
+
+  <!-- Branch 2: Right -> Rechaza -->
+  <path d="M 570 615 L 705 615" stroke="#0d3b66" stroke-width="2" marker-end="url(#arrow)" />
+  <rect x="615" y="602" width="34" height="20" rx="4" fill="#ffffff" stroke="#cbd5e1" />
+  <text x="632" y="612" class="edge-label">NO</text>
+
+  <!-- Node 6-Rechaza -->
+  <g id="r4-node-rechaza" transform="translate(805, 615)">
+    <rect x="-95" y="-24" width="190" height="48" rx="8" fill="#fff1f2" stroke="#f43f5e" stroke-width="1.5" />
+    <text x="0" y="-6" class="node-text" fill="#9f1239" font-size="11.5">Rechaza: se registra el</text>
+    <text x="0" y="11" class="node-text" fill="#9f1239" font-size="11.5">rechazo y se descarta</text>
+    <rect x="35" y="-34" width="60" height="18" rx="9" fill="#fef08a" stroke="#eab308" stroke-width="1" />
+    <text x="65" y="-24" class="badge-text" text-anchor="middle" dominant-baseline="central">⚙ diseño</text>
+  </g>
+  <line x1="805" y1="639" x2="805" y2="675" stroke="#0d3b66" stroke-width="2" marker-end="url(#arrow)" />
+  <g id="r4-node-fin3" transform="translate(805, 692)">
+    <rect x="-40" y="-14" width="80" height="28" rx="14" fill="#0f2b5c" />
+    <text x="0" y="0" class="node-text" fill="#ffffff" font-size="12">Fin</text>
+  </g>
+
+  <!-- Branch 3: Down -> Autoriza (SÍ) -->
+  <line x1="460" y1="640" x2="460" y2="678" stroke="#0d3b66" stroke-width="2.5" marker-end="url(#arrow)" />
+  <rect x="444" y="648" width="32" height="18" rx="4" fill="#ffffff" stroke="#cbd5e1" />
+  <text x="460" y="657" class="edge-label">SÍ</text>
+
+  <!-- Node 6-Autoriza -->
+  <g id="r4-node-autoriza" transform="translate(460, 710)">
+    <rect x="-105" y="-22" width="210" height="44" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="2" />
+    <text x="0" y="-4" class="node-text" fill="#065f46" font-size="12.5" font-weight="700">Autoriza: se registra</text>
+    <text x="0" y="12" class="node-text" fill="#065f46" font-size="12.5" font-weight="700">la autorización</text>
+    <rect x="45" y="-32" width="60" height="18" rx="9" fill="#fef08a" stroke="#eab308" stroke-width="1" />
+    <text x="75" y="-22" class="badge-text" text-anchor="middle" dominant-baseline="central">⚙ diseño</text>
+  </g>
+
+  <!-- Edge: Autoriza -> Pasa a R3 -->
+  <line x1="460" y1="732" x2="460" y2="765" stroke="#0d3b66" stroke-width="2.5" marker-end="url(#arrow)" />
+  <g id="r4-node-pasarr3-final" transform="translate(460, 785)">
+    <rect x="-70" y="-18" width="140" height="36" rx="18" fill="#0f2b5c" />
+    <text x="0" y="0" class="node-text" fill="#ffffff" font-size="13.5">Pasa a R3</text>
+  </g>
+
+  <!-- Bottom Legend -->
+  <g transform="translate(40, 830)">
+    <!-- Legend item 1 -->
+    <rect x="0" y="-8" width="30" height="16" rx="8" fill="#0f2b5c" />
+    <text x="38" y="2" class="legend-text">Inicio / Fin</text>
+    <!-- Legend item 2 -->
+    <polygon points="120,-8 150,-8 144,8 114,8" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5" />
+    <text x="156" y="2" class="legend-text">Datos de entrada</text>
+    <!-- Legend item 3 -->
+    <polygon points="275,-8 287,0 275,8 263,0" fill="#fef08a" stroke="#eab308" stroke-width="1.5" />
+    <text x="295" y="2" class="legend-text">Decisión</text>
+    <!-- Legend item 4 -->
+    <rect x="360" y="-8" width="28" height="16" rx="3" fill="#fefce8" stroke="#eab308" stroke-width="1.5" />
+    <text x="396" y="2" class="legend-text">Acción</text>
+    <!-- Legend item 5 -->
+    <rect x="450" y="-8" width="28" height="16" rx="3" fill="#ffffff" stroke="#475569" stroke-width="1.5" stroke-dasharray="3,2" />
+    <text x="486" y="2" class="legend-text">Intervención humana</text>
+    <!-- Legend item 6 -->
+    <rect x="620" y="-8" width="50" height="16" rx="8" fill="#fef08a" stroke="#eab308" stroke-width="1" />
+    <text x="645" y="0" class="badge-text" text-anchor="middle" dominant-baseline="central">⚙ diseño</text>
+    <text x="678" y="2" class="legend-text">Decisión del grupo (no sale de la sentencia)</text>
+  </g>
+</svg>

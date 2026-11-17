@@ -1,0 +1,170 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 860" width="100%" height="100%">
+  <defs>
+    <style>
+      .title { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 20px; font-weight: 700; fill: #0b2347; }
+      .subtitle { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 13px; fill: #556987; }
+      .node-text { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 13.5px; font-weight: 600; text-anchor: middle; dominant-baseline: central; }
+      .badge-text { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 11px; font-weight: 700; fill: #854d0e; }
+      .edge-label { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 12px; font-weight: 700; fill: #0b2347; text-anchor: middle; dominant-baseline: central; }
+      .legend-text { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 11.5px; fill: #475569; font-weight: 600; }
+    </style>
+    
+    <marker id="arrow-r3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0d3b66" />
+    </marker>
+  </defs>
+
+  <!-- Background Card -->
+  <rect x="0" y="0" width="920" height="860" rx="16" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" />
+
+  <!-- Title & Subtitle -->
+  <text x="460" y="38" text-anchor="middle" class="title">R3 · Con las cuatro condiciones cumplidas, solicitar el envío</text>
+  <text x="460" y="60" text-anchor="middle" class="subtitle">Si un candidato sigue siendo compatible, el organizador autorizó invitarlo, todavía faltan jugadores y no hay una invitación vigente para ese candidato...</text>
+
+  <!-- Node 1: Inicio (Condición 1 cumplida) -->
+  <g id="r3-node-1" transform="translate(430, 100)">
+    <rect x="-240" y="-22" width="480" height="44" rx="22" fill="#0f2b5c" />
+    <text x="0" y="-4" class="node-text" fill="#93c5fd" font-size="11">Inicio</text>
+    <text x="0" y="11" class="node-text" fill="#ffffff">Condición 1 de 4 cumplida: el organizador autorizó invitarlo (viene de R4)</text>
+  </g>
+
+  <!-- Edge: 1 to 2 -->
+  <line x1="430" y1="122" x2="430" y2="152" stroke="#0d3b66" stroke-width="2.5" marker-end="url(#arrow-r3)" />
+
+  <!-- Node 2: Datos de Entrada -->
+  <g id="r3-node-2" transform="translate(430, 175)">
+    <polygon points="-240,-22 260,-22 230,22 -270,22" fill="#eff6ff" stroke="#93c5fd" stroke-width="2" />
+    <text x="-5" y="-5" class="node-text" fill="#1e40af" font-size="11">Datos de entrada</text>
+    <text x="-5" y="10" class="node-text" fill="#0f2b5c" font-size="12.5">candidato y su disponibilidad · jugadores confirmados · registro de invitaciones</text>
+  </g>
+
+  <!-- Edge: 2 to 3 -->
+  <line x1="430" y1="197" x2="430" y2="228" stroke="#0d3b66" stroke-width="2.5" marker-end="url(#arrow-r3)" />
+
+  <!-- Node 3: Condición 2 de 4 -> ¿Sigue siendo compatible? -->
+  <g id="r3-node-3" transform="translate(430, 265)">
+    <polygon points="0,-32 140,0 0,32 -140,0" fill="#fef08a" stroke="#eab308" stroke-width="2.5" />
+    <text x="0" y="-5" class="node-text" fill="#0f2b5c" font-size="11" font-weight="700">Condición 2 de 4</text>
+    <text x="0" y="10" class="node-text" fill="#0f2b5c" font-size="13" font-weight="700">¿Sigue siendo compatible?</text>
+  </g>
+
+  <!-- Edge: Node 3 NO -> to Failure Bus (Right) -->
+  <line x1="570" y1="265" x2="770" y2="265" stroke="#0d3b66" stroke-width="2" />
+  <rect x="585" y="253" width="34" height="18" rx="4" fill="#ffffff" stroke="#cbd5e1" />
+  <text x="602" y="262" class="edge-label">NO</text>
+
+  <!-- Edge: Node 3 SÍ -> Down to Node 4 -->
+  <line x1="430" y1="297" x2="430" y2="338" stroke="#0d3b66" stroke-width="2.5" marker-end="url(#arrow-r3)" />
+  <rect x="414" y="307" width="32" height="18" rx="4" fill="#ffffff" stroke="#cbd5e1" />
+  <text x="430" y="316" class="edge-label">SÍ</text>
+
+  <!-- Node 4: Condición 3 de 4 -> ¿Todavía faltan jugadores? -->
+  <g id="r3-node-4" transform="translate(430, 375)">
+    <polygon points="0,-32 140,0 0,32 -140,0" fill="#fef08a" stroke="#eab308" stroke-width="2.5" />
+    <text x="0" y="-5" class="node-text" fill="#0f2b5c" font-size="11" font-weight="700">Condición 3 de 4</text>
+    <text x="0" y="10" class="node-text" fill="#0f2b5c" font-size="13" font-weight="700">¿Todavía faltan jugadores?</text>
+  </g>
+
+  <!-- Edge: Node 4 NO -> to Failure Bus (Right) -->
+  <line x1="570" y1="375" x2="770" y2="375" stroke="#0d3b66" stroke-width="2" />
+  <rect x="585" y="363" width="34" height="18" rx="4" fill="#ffffff" stroke="#cbd5e1" />
+  <text x="602" y="372" class="edge-label">NO</text>
+
+  <!-- Edge: Node 4 SÍ -> Down to Node 5 -->
+  <line x1="430" y1="407" x2="430" y2="448" stroke="#0d3b66" stroke-width="2.5" marker-end="url(#arrow-r3)" />
+  <rect x="414" y="417" width="32" height="18" rx="4" fill="#ffffff" stroke="#cbd5e1" />
+  <text x="430" y="426" class="edge-label">SÍ</text>
+
+  <!-- Node 5: Condición 4 de 4 -> ¿Ya hay una invitación vigente...? -->
+  <g id="r3-node-5" transform="translate(430, 490)">
+    <polygon points="0,-36 170,0 0,36 -170,0" fill="#fef08a" stroke="#eab308" stroke-width="2.5" />
+    <text x="0" y="-12" class="node-text" fill="#0f2b5c" font-size="11" font-weight="700">Condición 4 de 4</text>
+    <text x="0" y="3" class="node-text" fill="#0f2b5c" font-size="12" font-weight="700">¿Ya hay una invitación vigente para</text>
+    <text x="0" y="18" class="node-text" fill="#0f2b5c" font-size="12" font-weight="700">ese candidato en este partido?</text>
+    <!-- Badge diseño -->
+    <rect x="-175" y="-18" width="55" height="18" rx="9" fill="#fef08a" stroke="#eab308" stroke-width="1" />
+    <text x="-147" y="-9" class="badge-text" text-anchor="middle" dominant-baseline="central">⚙ diseño</text>
+  </g>
+
+  <!-- Edge: Node 5 SÍ -> to Failure Bus (Right) -->
+  <line x1="600" y1="490" x2="770" y2="490" stroke="#0d3b66" stroke-width="2" />
+  <rect x="640" y="478" width="30" height="18" rx="4" fill="#ffffff" stroke="#cbd5e1" />
+  <text x="655" y="487" class="edge-label">SÍ</text>
+
+  <!-- Failure Bus vertical line -->
+  <line x1="770" y1="265" x2="770" y2="525" stroke="#0d3b66" stroke-width="2" marker-end="url(#arrow-r3)" />
+
+  <!-- Node Failure Box: Se registra qué condición falló -->
+  <g id="r3-node-fail" transform="translate(770, 560)">
+    <rect x="-105" y="-28" width="210" height="56" rx="8" fill="#fff1f2" stroke="#f43f5e" stroke-width="1.8" />
+    <text x="0" y="-7" class="node-text" fill="#9f1239" font-size="12">Se registra qué condición</text>
+    <text x="0" y="11" class="node-text" fill="#9f1239" font-size="12">falló y NO se envía la invitación</text>
+    <!-- Badge diseño -->
+    <rect x="35" y="-38" width="55" height="18" rx="9" fill="#fef08a" stroke="#eab308" stroke-width="1" />
+    <text x="62" y="-29" class="badge-text" text-anchor="middle" dominant-baseline="central">⚙ diseño</text>
+  </g>
+
+  <!-- Edge: Fail -> Fin -->
+  <line x1="770" y1="588" x2="770" y2="640" stroke="#0d3b66" stroke-width="2" marker-end="url(#arrow-r3)" />
+  <g id="r3-node-fin-fail" transform="translate(770, 655)">
+    <rect x="-40" y="-14" width="80" height="28" rx="14" fill="#0f2b5c" />
+    <text x="0" y="0" class="node-text" fill="#ffffff" font-size="12">Fin</text>
+  </g>
+
+  <!-- Edge: Node 5 NO -> Down to Acción (Success path) -->
+  <line x1="430" y1="526" x2="430" y2="570" stroke="#0d3b66" stroke-width="2.5" marker-end="url(#arrow-r3)" />
+  <rect x="413" y="538" width="34" height="18" rx="4" fill="#ffffff" stroke="#cbd5e1" />
+  <text x="430" y="547" class="edge-label">NO</text>
+
+  <!-- Node 6: Acción -> El sistema solicita enviar la invitación -->
+  <g id="r3-node-6" transform="translate(430, 600)">
+    <rect x="-190" y="-26" width="380" height="52" rx="10" fill="#fefce8" stroke="#eab308" stroke-width="2.5" />
+    <text x="0" y="-4" class="node-text" fill="#0f2b5c" font-size="14" font-weight="700">El sistema solicita enviar</text>
+    <text x="0" y="14" class="node-text" fill="#0f2b5c" font-size="14" font-weight="700">la invitación a ese candidato</text>
+  </g>
+
+  <!-- Edge: 6 to 7 (Resultado) -->
+  <line x1="430" y1="626" x2="430" y2="665" stroke="#0d3b66" stroke-width="2.5" marker-end="url(#arrow-r3)" />
+
+  <!-- Node 7: Resultado -->
+  <g id="r3-node-7" transform="translate(430, 690)">
+    <rect x="-190" y="-22" width="380" height="44" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="1.8" />
+    <text x="0" y="-5" class="node-text" fill="#047857" font-size="11">Resultado</text>
+    <text x="0" y="11" class="node-text" fill="#065f46" font-size="13" font-weight="700">Invitación pedida a la función de envío de la app</text>
+    <!-- Badge diseño -->
+    <rect x="130" y="-32" width="55" height="18" rx="9" fill="#fef08a" stroke="#eab308" stroke-width="1" />
+    <text x="157" y="-23" class="badge-text" text-anchor="middle" dominant-baseline="central">⚙ diseño</text>
+  </g>
+
+  <!-- Edge: 7 to Fin -->
+  <line x1="430" y1="712" x2="430" y2="745" stroke="#0d3b66" stroke-width="2.5" marker-end="url(#arrow-r3)" />
+  <g id="r3-node-fin-success" transform="translate(430, 762)">
+    <rect x="-45" y="-16" width="90" height="32" rx="16" fill="#0f2b5c" />
+    <text x="0" y="0" class="node-text" fill="#ffffff" font-size="13">Fin</text>
+  </g>
+
+  <!-- Notice note -->
+  <text x="430" y="805" text-anchor="middle" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#64748b" font-style="italic">
+    La aprobación humana ocurre previamente en R4. R3 solo verifica condiciones y pide el envío si todas se cumplen.
+  </text>
+
+  <!-- Bottom Legend -->
+  <g transform="translate(40, 835)">
+    <!-- Legend item 1 -->
+    <rect x="0" y="-8" width="30" height="16" rx="8" fill="#0f2b5c" />
+    <text x="38" y="2" class="legend-text">Inicio / Fin</text>
+    <!-- Legend item 2 -->
+    <polygon points="120,-8 150,-8 144,8 114,8" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5" />
+    <text x="156" y="2" class="legend-text">Datos de entrada</text>
+    <!-- Legend item 3 -->
+    <polygon points="275,-8 287,0 275,8 263,0" fill="#fef08a" stroke="#eab308" stroke-width="1.5" />
+    <text x="295" y="2" class="legend-text">Decisión</text>
+    <!-- Legend item 4 -->
+    <rect x="360" y="-8" width="28" height="16" rx="3" fill="#fefce8" stroke="#eab308" stroke-width="1.5" />
+    <text x="396" y="2" class="legend-text">Acción</text>
+    <!-- Legend item 5 -->
+    <rect x="460" y="-8" width="50" height="16" rx="8" fill="#fef08a" stroke="#eab308" stroke-width="1" />
+    <text x="485" y="0" class="badge-text" text-anchor="middle" dominant-baseline="central">⚙ diseño</text>
+    <text x="518" y="2" class="legend-text">Decisión del grupo (no sale de la sentencia)</text>
+  </g>
+</svg>
