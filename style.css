@@ -252,7 +252,9 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 24px;
   height: 74px;
+  max-width: 1360px; /* más ancho que el resto: evita que el menú se parta en dos líneas */
 }
 
 .nav-brand {
@@ -260,9 +262,12 @@ button {
   align-items: center;
   gap: 14px;
   text-decoration: none;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .nav-logo-icon {
+  flex-shrink: 0;
   width: 44px;
   height: 44px;
   border-radius: 10px;
@@ -303,15 +308,23 @@ button {
 .site-nav-list {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
   list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav-list li {
+  flex-shrink: 0;
 }
 
 .site-nav-link {
+  display: inline-block;
+  white-space: nowrap;
   font-size: 0.875rem;
   font-weight: 600;
   color: #cbd5e1;
-  padding: 8px 14px;
+  padding: 8px 12px;
   border-radius: var(--radius-sm);
   transition: all 0.2s ease;
 }
@@ -323,6 +336,8 @@ button {
 }
 
 .btn-nav-action {
+  white-space: nowrap;
+  margin-left: 8px;
   font-size: 0.825rem;
   font-weight: 800;
   background-color: var(--gold-500);
@@ -1591,6 +1606,14 @@ button {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+/* Navbar: compactar en pantallas medianas para que nunca se parta en 2 líneas */
+@media (max-width: 1279px) {
+  .nav-container { gap: 16px; }
+  .nav-brand-sub { display: none; }
+  .site-nav-link { font-size: 0.8rem; padding: 8px 9px; }
+  .btn-nav-action { font-size: 0.78rem; padding: 8px 14px; margin-left: 4px; }
 }
 
 /* Desktop optimization & scroll adjustments */
