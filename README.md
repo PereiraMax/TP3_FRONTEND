@@ -31,14 +31,15 @@
 
 ---
 
-## 👥 Integrantes del Grupo y Aportes (Criterio 01 · Nivel Propone)
+## 👥 Integrantes del Grupo (Criterio 01 · Nivel Propone)
 
-| Integrante | Rol en el Trabajo Agéntico | Aportes Concretos |
-| :--- | :--- | :--- |
-| **Integrante 1 (Coordinación)** | Coordinador de Prompts e Instrucciones | Estructuración de directivas al agente de programación en Antigravity IDE; definición del tono visual y colores de Matchdeverdad. |
-| **Integrante 2 (Lógica & Rúbrica)** | Revisor Lógico y de Sentencias | Formalización proposicional de R3 y R4, redacción de las 12 decisiones de diseño (`⚙ diseño`) y control estricto de la rúbrica docente. |
-| **Integrante 3 (Front End & QA)** | Auditor de Interfaz y Accesibilidad | Pruebas exhaustivas en resolución desktop, verificación de ausencia de desbordes horizontales, control de accesibilidad por teclado en desplegables (`aria-expanded`). |
-| **Integrante 4 (DevOps & Docs)** | Responsable de Despliegue y Publicación | Gestión de control de versiones Git, publicación en GitHub Pages, verificación de enlaces externos en modo incógnito y documentación en README. |
+| Integrante | GitHub |
+| :--- | :--- |
+| Maximo Ariel Pereira | [PereiraMax](https://github.com/PereiraMax) |
+| Julian Piedrabuena | [juliganSW](https://github.com/juliganSW) |
+| Martin Savia | [martin-2t](https://github.com/martin-2t) |
+| Emmanuel Valdez | [Emmanuel-Valdez](https://github.com/Emmanuel-Valdez) |
+| Matias Mazzitelli | [mdev-repos](https://github.com/mdev-repos) |
 
 ### 🔍 Revisión Cruzada Documentada y Mejora Concreta (Nivel Propone)
 Durante la sesión de revisión interna del grupo, se contrastó el diagrama preliminar generado por el agente frente a la realidad del producto:

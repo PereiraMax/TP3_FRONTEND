@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initDiagramTabs();
   initSimulator();
   initNavScrollSpy();
+  initMobileNav();
 });
 
 /* ==========================================================================
@@ -40,6 +41,20 @@ function initAccordions() {
         toggleAccordion(item, !isOpen);
       }
     });
+  });
+
+  // Recalcula la altura de los paneles abiertos cuando cambia el ancho de pantalla
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      accordionItems.forEach(item => {
+        if (item.classList.contains('open')) {
+          const panel = item.querySelector('.accordion-panel');
+          if (panel) panel.style.maxHeight = panel.scrollHeight + 'px';
+        }
+      });
+    }, 120);
   });
 
   // Global toggle buttons (Expandir todos / Colapsar todos)
@@ -85,10 +100,14 @@ function initDiagramTabs() {
     btn.addEventListener('click', () => {
       const targetId = btn.getAttribute('data-target');
 
-      tabButtons.forEach(b => b.classList.remove('active'));
+      tabButtons.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
       tabPanes.forEach(p => p.classList.remove('active'));
 
       btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
       const targetPane = document.getElementById(targetId);
       if (targetPane) {
         targetPane.classList.add('active');
@@ -413,9 +432,45 @@ function initNavScrollSpy() {
 
     navLinks.forEach(link => {
       link.classList.remove('active');
+      link.removeAttribute('aria-current');
       if (link.getAttribute('href') === `#${currentId}`) {
         link.classList.add('active');
+        link.setAttribute('aria-current', 'true');
       }
     });
+  }, { passive: true });
+}
+
+
+/* ==========================================================================
+   5. MENÚ DE NAVEGACIÓN MÓVIL (HAMBURGUESA)
+   ========================================================================== */
+function initMobileNav() {
+  const toggle = document.getElementById('nav-toggle');
+  const nav = document.getElementById('site-nav');
+  if (!toggle || !nav) return;
+
+  const setOpen = (open) => {
+    nav.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Cerrar menú de navegación' : 'Abrir menú de navegación');
+  };
+
+  toggle.addEventListener('click', () => setOpen(!nav.classList.contains('open')));
+
+  // Cerrar al elegir una sección
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+
+  // Cerrar con Escape (devuelve el foco al botón)
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && nav.classList.contains('open')) {
+      setOpen(false);
+      toggle.focus();
+    }
+  });
+
+  // Cerrar al pasar a escritorio
+  window.matchMedia('(min-width: 1024px)').addEventListener('change', (e) => {
+    if (e.matches) setOpen(false);
   });
 }
