@@ -58,7 +58,7 @@
           <li><a href="#detalles" class="site-nav-link">Desplegables</a></li>
           <li><a href="#casos-limite" class="site-nav-link">Casos Límite</a></li>
           <li><a href="#simulador" class="btn-nav-action">
-            <span aria-hidden="true">⚡</span> Probar Simulador
+            <span aria-hidden="true">⚡</span> Probar Casos
           </a></li>
         </ul>
       </nav>
@@ -110,7 +110,7 @@
                 <circle cx="12" cy="12" r="10"></circle>
                 <polygon points="10 8 16 12 10 16 10 8"></polygon>
               </svg>
-              Simulador en Vivo
+              Casos de Ejemplo
             </a>
           </div>
         </div>
@@ -538,7 +538,7 @@
               </tr>
               <tr>
                 <td class="num-col">6</td>
-                <td><strong>Invitación vigente:</strong> Invitación enviada para este mismo partido que no venció, no fue respondida ni cancelada.</td>
+                <td><strong>Invitación vigente:</strong> Invitación enviada para este mismo partido que no venció, no fue respondida ni fue cancelada. Que exista una invitación vigente es condición de la sentencia; lo que define el grupo es qué significa «vigente».</td>
                 <td>Evita enviar múltiples invitaciones spam a la misma persona para el mismo partido, sin restringir su participación en otros eventos.</td>
                 <td class="rule-col">R3</td>
                 <td><span class="badge-diseno">⚙ diseño</span></td>
@@ -656,9 +656,9 @@
               </h4>
               <ol class="how-to-read-list">
                 <li><strong>Entrada:</strong> Ingresa un candidato que el organizador ya autorizó previamente (Condición 1 de 4 garantizada desde R4).</li>
-                <li><strong>Condición 2 de 4:</strong> ¿Sigue siendo compatible? Se revalida que no haya cambiado su disponibilidad o ubicación. Si NO es compatible, se registra el fallo y no se envía.</li>
+                <li><strong>Condición 2 de 4:</strong> ¿Sigue siendo compatible? <span class="badge-diseno">⚙ diseño</span> (la definición de «compatible» es del grupo). Se revalida que no haya cambiado su disponibilidad o ubicación. Si NO es compatible, se registra el fallo y no se envía.</li>
                 <li><strong>Condición 3 de 4:</strong> ¿Todavía faltan jugadores? Se revalida que no se haya completado el cupo de 10 mientras se esperaba. Si NO faltan, se registra el fallo y no se envía.</li>
-                <li><strong>Condición 4 de 4:</strong> <span class="badge-diseno">⚙ diseño</span> ¿Ya hay una invitación vigente para este candidato en este partido? Si SÍ hay, se frena para no duplicar.</li>
+                <li><strong>Condición 4 de 4:</strong> ¿Ya hay una invitación vigente para este candidato en este partido? Si SÍ hay, se frena para no duplicar. La condición sale de la sentencia; solo la definición de «vigente» es <span class="badge-diseno">⚙ diseño</span>.</li>
                 <li><strong>Acción & Resultado:</strong> Si las condiciones dan bien (NO hay invitación previa y se cumplen las demás), el sistema <em>solicita enviar la invitación</em> al módulo de envíos de la app y finaliza con éxito.</li>
               </ol>
             </div>
@@ -1060,7 +1060,7 @@
             </div>
             <h4 class="edge-case-title">Partido llenado mientras el organizador deliberaba</h4>
             <p class="edge-case-body">
-              El organizador tenía en pantalla la tarjeta de permiso para un candidato, pero en ese intervalo ingresaron los últimos confirmados por otra vía.
+              El organizador tenía en pantalla la tarjeta de permiso para un candidato, pero en ese intervalo ingresaron los últimos confirmados por otra vía. El diagrama de R4 evalúa el cupo al proponer; esta revalidación mientras la tarjeta sigue abierta es una extensión propuesta por el grupo.
             </p>
             <div class="edge-case-resolution">
               🛡️ <strong>Resolución del Agente:</strong> La tarjeta de autorización se invalida automáticamente mostrando "Cupo completado", evitando que el organizador autorice un jugador innecesario.
@@ -1077,10 +1077,10 @@
     <section id="simulador" class="section section-dark">
       <div class="container">
         <div class="section-header">
-          <span class="section-kicker">08 · Simulador en Vivo</span>
-          <h2 class="section-title">Consola de Evaluación Agéntica</h2>
+          <span class="section-kicker">08 · Casos de Ejemplo</span>
+          <h2 class="section-title">Recorrido de Casos de Ejemplo</h2>
           <p class="section-lead">
-            Pruebe el comportamiento reactivo de las reglas en tiempo real. Ejecute los escenarios preconfigurados del TP3 o manipule las variables de entrada para comprobar cada decisión.
+            Recorra la propuesta paso a paso con casos que cumplen la condición y casos que no. Es una ilustración del recorrido: no ejecuta agentes ni se conecta a servicios reales.
           </p>
         </div>
 
@@ -1101,7 +1101,7 @@
                 </button>
                 <button type="button" class="sim-preset-btn" data-preset="partido-completo">
                   <span>🔴 Caso 3: Cupo Lleno durante Espera</span>
-                  <small>Faltan = NO (10/10) ➔ Se cancela el despacho</small>
+                  <small>R4 pide permiso ➔ Autoriza ➔ R3 detecta 10/10 y frena</small>
                 </button>
                 <button type="button" class="sim-preset-btn" data-preset="rechazado">
                   <span>❌ Caso 4: Organizador Rechaza a Marcos</span>
@@ -1119,8 +1119,13 @@
               <h5>Variables de Entrada y Decisiones</h5>
               
               <div class="sim-toggle-row">
-                <label for="sim-faltan">¿Todavía faltan jugadores? (&lt; 10)</label>
+                <label for="sim-faltan">¿Faltan jugadores al proponer? (R4)</label>
                 <input type="checkbox" id="sim-faltan" class="sim-toggle-input" checked>
+              </div>
+
+              <div class="sim-toggle-row">
+                <label for="sim-faltan-envio">¿Siguen faltando jugadores al enviar? (R3)</label>
+                <input type="checkbox" id="sim-faltan-envio" class="sim-toggle-input" checked>
               </div>
 
               <div class="sim-toggle-row">
@@ -1148,7 +1153,7 @@
               </div>
 
               <button type="button" id="btn-run-simulation" class="btn-primary" style="width: 100%; margin-top: 18px; justify-content: center;">
-                Ejecutar Lógica Agéntica ⚡
+                Recorrer caso de ejemplo ⚡
               </button>
             </div>
 
@@ -1157,8 +1162,8 @@
           <!-- Consola de Resultados / Trazabilidad de Logs -->
           <div class="sim-console">
             <div class="sim-console-header">
-              <span>BITÁCORA DE EJECUCIÓN AGÉNTICA (TRAZABILIDAD EN TIEMPO REAL)</span>
-              <span id="sim-status-badge" class="sim-status-pill" style="background: #059669; color: #ffffff;">ESTADO: ÉXITO</span>
+              <span>BITÁCORA DEL RECORRIDO (EJEMPLO ILUSTRATIVO)</span>
+              <span id="sim-status-badge" class="sim-status-pill" style="background: #059669; color: #ffffff;">RESULTADO: SE SOLICITA EL ENVÍO</span>
             </div>
             <div id="sim-logs-container" class="sim-log-list">
               <!-- Logs inyectados dinámicamente por script.js -->
