@@ -36,7 +36,7 @@
 | Integrante | GitHub | Aporte concreto |
 | :--- | :--- | :--- |
 | Maximo Ariel Pereira | [PereiraMax](https://github.com/PereiraMax) | Uso de Google Antigravity IDE con Gemini 3.8 Flash para la generación agéntica de la landing (HTML, CSS, JS, SVG). |
-| Julian Piedrabuena | [juliganSW](https://github.com/juliganSW) | *(completar)* |
+| Julian Piedrabuena | [juliganSW](https://github.com/juliganSW) | Uso de Claude (Sonnet 5.5) para auditar la landing contra la consigna y el README (inconsistencias de enlaces) y para mejorar la accesibilidad por teclado: patrón ARIA y navegación con flechas en las pestañas de diagramas, y `aria-controls` y paneles cerrados fuera del foco en los 14 desplegables. Cambios propuestos mediante rama y Pull Request. |
 | Martin Savia | [martin-2t](https://github.com/martin-2t) | 	Uso de Claude Code (Sonnet 5.5), Corrección de estilos (CSS) de la landing; revisión de la lógica contra la consigna y corrección del simulador (separación del cupo en R4 y R3, resultado final explícito), renombrado de elementos para no sugerir ejecución de agentes reales, ajuste de las insignias ⚙ diseño en el diagrama R3, de la decisión 6 y del caso límite 6. |
 | Emmanuel Valdez | [Emmanuel-Valdez](https://github.com/Emmanuel-Valdez) | Uso de OpenCode (plan Go) con DeepSeek 4.1 y Qwen 3.7 para iteraciones de código, revisión contra consigna, accesibilidad y responsive. |
 | Matias Mazzitelli | [mdev-repos](https://github.com/mdev-repos) | Uso de Claude Code (Sonnet 5.5) para revisar las consignas y los criterios de evaluación, iterar con el agente para elaborar una propuesta de solución ("Un Tinder para partidos de futbol 5) y revisar el código generado por los demás agentes. |
@@ -58,6 +58,7 @@ El desarrollo del proyecto se ejecutó bajo la consigna de **Construcción 100% 
 | :--- | :--- | :--- |
 | **Google Antigravity IDE** | Gemini 3.8 Flash | Entorno de programación agéntica. Se utilizó para generar y modificar todos los archivos del proyecto (HTML, CSS, JS y SVG) mediante instrucciones en lenguaje natural, sin edición manual de código. |
 | **OpenCode** | DeepSeek 4.1 / Qwen 3.7 | Editor agéntico en terminal (plan OpenCode Go). Se utilizó para dirigirlas iteraciones de código, revisión de archivos, comparación con la consigna y ajustes de accesibilidad, responsive y estructura del README. |
+| **Claude** (Julián) | Sonnet 5.5 | Auditoría de la landing y del README contra la consigna; mejora de accesibilidad (ARIA y teclado en pestañas de diagramas y desplegables), aplicada por rama y Pull Request. |
 | **Claude Code** | Sonnet 5.5 | Aplicación de escritorio de Claude. Se utilizó para evaluar los primeros intercambios del grupo, pulir ideas y generar una propuesta que se ajuste de mejor manera a la consigna y los criterios de evaluación. |
 
 ### Registro de Iteración Agéntica (Nivel Propone)
@@ -110,11 +111,11 @@ El proyecto fue desarrollado utilizando tecnologías web estándar (HTML5 semán
 ### Opción 1: Apertura directa
 1. Descargue o clone el repositorio en su computadora:
    ```bash
-   git clone https://github.com/PereiraMax/tp3-matchdeverdad.git
+   git clone https://github.com/PereiraMax/TP3_FRONTEND.git
    ```
 2. Ingrese a la carpeta del proyecto:
    ```bash
-   cd tp3-matchdeverdad
+   cd TP3_FRONTEND
    ```
 3. Haga doble clic sobre el archivo `index.html` para abrirlo directamente en Google Chrome, Firefox, Edge o Safari.
 
@@ -135,7 +136,7 @@ Abra `http://localhost:8080` en su navegador.
 ## 📋 Estructura de Archivos del Repositorio
 
 ```
-tp3-matchdeverdad/
+TP3_FRONTEND/
 ├── index.html                           # Landing page completa, semántica y accesible
 ├── style.css                            # Estilos y variables con paleta oficial de Matchdeverdad
 ├── script.js                            # Controlador interactivo (acordeones, tabs y simulador)
