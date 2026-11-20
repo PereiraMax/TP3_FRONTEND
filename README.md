@@ -37,7 +37,7 @@
 | :--- | :--- | :--- |
 | Maximo Ariel Pereira | [PereiraMax](https://github.com/PereiraMax) | Uso de Google Antigravity IDE con Gemini 3.8 Flash para la generación agéntica de la landing (HTML, CSS, JS, SVG). |
 | Julian Piedrabuena | [juliganSW](https://github.com/juliganSW) | *(completar)* |
-| Martin Savia | [martin-2t](https://github.com/martin-2t) | *(completar)* |
+| Martin Savia | [martin-2t](https://github.com/martin-2t) | 	Uso de Claude Code (Sonnet 5.5), Corrección de estilos (CSS) de la landing; revisión de la lógica contra la consigna y corrección del simulador (separación del cupo en R4 y R3, resultado final explícito), renombrado de elementos para no sugerir ejecución de agentes reales, ajuste de las insignias ⚙ diseño en el diagrama R3, de la decisión 6 y del caso límite 6. |
 | Emmanuel Valdez | [Emmanuel-Valdez](https://github.com/Emmanuel-Valdez) | Uso de OpenCode (plan Go) con DeepSeek 4.1 y Qwen 3.7 para iteraciones de código, revisión contra consigna, accesibilidad y responsive. |
 | Matias Mazzitelli | [mdev-repos](https://github.com/mdev-repos) | Uso de Claude Code (Sonnet 5.5) para revisar las consignas y los criterios de evaluación, iterar con el agente para elaborar una propuesta de solución ("Un Tinder para partidos de futbol 5) y revisar el código generado por los demás agentes. |
 
