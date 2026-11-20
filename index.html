@@ -612,13 +612,13 @@
 
         <!-- Botones de Pestañas de Diagramas -->
         <div class="diagram-tab-controls" role="tablist" aria-label="Selector de diagramas de flujo">
-          <button type="button" class="diagram-tab-btn active" role="tab" aria-selected="true" data-target="tab-diagram-r4">
+          <button type="button" class="diagram-tab-btn active" role="tab" id="tab-btn-r4" aria-controls="tab-diagram-r4" aria-selected="true" tabindex="0" data-target="tab-diagram-r4">
             <span aria-hidden="true">1️⃣</span> Diagrama R4: Pedir Permiso
           </button>
-          <button type="button" class="diagram-tab-btn" role="tab" aria-selected="false" data-target="tab-diagram-r3">
+          <button type="button" class="diagram-tab-btn" role="tab" id="tab-btn-r3" aria-controls="tab-diagram-r3" aria-selected="false" tabindex="-1" data-target="tab-diagram-r3">
             <span aria-hidden="true">2️⃣</span> Diagrama R3: Solicitar Envío
           </button>
-          <button type="button" class="diagram-tab-btn" role="tab" aria-selected="false" data-target="tab-diagram-full">
+          <button type="button" class="diagram-tab-btn" role="tab" id="tab-btn-full" aria-controls="tab-diagram-full" aria-selected="false" tabindex="-1" data-target="tab-diagram-full">
             <span aria-hidden="true">🔄</span> Recorrido Completo: De R4 a R3
           </button>
         </div>
@@ -627,7 +627,7 @@
         <div class="diagram-viewer-card">
           
           <!-- PANE 1: DIAGRAMA R4 -->
-          <div id="tab-diagram-r4" class="diagram-content-pane active" role="tabpanel">
+          <div id="tab-diagram-r4" class="diagram-content-pane active" role="tabpanel" aria-labelledby="tab-btn-r4">
             <p class="diagram-scroll-hint" aria-hidden="true">↔ Deslizá el diagrama para verlo completo</p>
             <div class="diagram-svg-frame" tabindex="0" role="group" aria-label="Diagrama (desplazable horizontalmente)">
               <img src="assets/images/diagram-r4.svg" alt="Diagrama de flujo de la sentencia R4: pedir permiso y no enviar la invitación" width="920" height="860">
@@ -653,7 +653,7 @@
           </div>
 
           <!-- PANE 2: DIAGRAMA R3 -->
-          <div id="tab-diagram-r3" class="diagram-content-pane" role="tabpanel">
+          <div id="tab-diagram-r3" class="diagram-content-pane" role="tabpanel" aria-labelledby="tab-btn-r3">
             <p class="diagram-scroll-hint" aria-hidden="true">↔ Deslizá el diagrama para verlo completo</p>
             <div class="diagram-svg-frame" tabindex="0" role="group" aria-label="Diagrama (desplazable horizontalmente)">
               <img src="assets/images/diagram-r3.svg" alt="Diagrama de flujo de la sentencia R3: con las cuatro condiciones cumplidas, solicitar el envío" width="920" height="860">
@@ -673,7 +673,7 @@
           </div>
 
           <!-- PANE 3: RECORRIDO COMPLETO -->
-          <div id="tab-diagram-full" class="diagram-content-pane" role="tabpanel">
+          <div id="tab-diagram-full" class="diagram-content-pane" role="tabpanel" aria-labelledby="tab-btn-full">
             <p class="diagram-scroll-hint" aria-hidden="true">↔ Deslizá el diagrama para verlo completo</p>
             <div class="diagram-svg-frame" tabindex="0" role="group" aria-label="Diagrama (desplazable horizontalmente)">
               <img src="assets/images/diagram-recorrido-completo.svg" alt="Diagrama integrado del recorrido completo del candidato: de R4 a R3" width="1000" height="480">
@@ -727,14 +727,14 @@
 
             <!-- Item 1: Datos que entran -->
             <div class="accordion-item">
-              <button class="accordion-trigger" aria-expanded="false">
+              <button type="button" class="accordion-trigger" id="acc-trigger-1" aria-expanded="false" aria-controls="acc-panel-1">
                 <span class="accordion-title-inner">
                   <span class="accordion-icon-tag" aria-hidden="true">📥</span>
                   <span>Datos que entran</span>
                 </span>
                 <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </button>
-              <div class="accordion-panel">
+              <div class="accordion-panel" id="acc-panel-1" role="region" aria-labelledby="acc-trigger-1">
                 <div class="accordion-panel-inner">
                   <p>El perfil del candidato propuesto por el matcher (identificador único, posición de juego y horario libre), el identificador del partido con su recuento actual de confirmados (para evaluar que sea menor a 10) y la tabla de autorizaciones previas del organizador.</p>
                 </div>
@@ -743,14 +743,14 @@
 
             <!-- Item 2: Qué se decide -->
             <div class="accordion-item">
-              <button class="accordion-trigger" aria-expanded="false">
+              <button type="button" class="accordion-trigger" id="acc-trigger-2" aria-expanded="false" aria-controls="acc-panel-2">
                 <span class="accordion-title-inner">
                   <span class="accordion-icon-tag" aria-hidden="true">⚖️</span>
                   <span>Qué se decide</span>
                 </span>
                 <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </button>
-              <div class="accordion-panel">
+              <div class="accordion-panel" id="acc-panel-2" role="region" aria-labelledby="acc-trigger-2">
                 <div class="accordion-panel-inner">
                   <p>Se evalúa si todavía faltan jugadores para completar los 10 confirmados del partido de fútbol 5 y si consta o no la autorización previa y expresa del organizador para convocar a ese candidato en particular.</p>
                 </div>
@@ -759,14 +759,14 @@
 
             <!-- Item 3: Acción propuesta -->
             <div class="accordion-item">
-              <button class="accordion-trigger" aria-expanded="false">
+              <button type="button" class="accordion-trigger" id="acc-trigger-3" aria-expanded="false" aria-controls="acc-panel-3">
                 <span class="accordion-title-inner">
                   <span class="accordion-icon-tag" aria-hidden="true">⚡</span>
                   <span>Acción propuesta</span>
                 </span>
                 <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </button>
-              <div class="accordion-panel">
+              <div class="accordion-panel" id="acc-panel-3" role="region" aria-labelledby="acc-trigger-3">
                 <div class="accordion-panel-inner">
                   <p>Si no consta la autorización, el sistema emite una solicitud interactiva de permiso al teléfono del organizador y <strong>bloquea estrictamente el envío</strong> de cualquier mensaje hacia el jugador.</p>
                 </div>
@@ -775,14 +775,14 @@
 
             <!-- Item 4: Resultado esperado -->
             <div class="accordion-item">
-              <button class="accordion-trigger" aria-expanded="false">
+              <button type="button" class="accordion-trigger" id="acc-trigger-4" aria-expanded="false" aria-controls="acc-panel-4">
                 <span class="accordion-title-inner">
                   <span class="accordion-icon-tag" aria-hidden="true">🏁</span>
                   <span>Resultado esperado</span>
                 </span>
                 <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </button>
-              <div class="accordion-panel">
+              <div class="accordion-panel" id="acc-panel-4" role="region" aria-labelledby="acc-trigger-4">
                 <div class="accordion-panel-inner">
                   <p>Un requerimiento de permiso entregado al organizador sin ninguna invitación cursada en paralelo; posteriormente, ante la interacción del organizador, una autorización registrada que habilita el paso hacia la regla R3 o un rechazo registrado que descarta al postulante.</p>
                 </div>
@@ -791,14 +791,14 @@
 
             <!-- Item 5: Excepciones -->
             <div class="accordion-item">
-              <button class="accordion-trigger" aria-expanded="false">
+              <button type="button" class="accordion-trigger" id="acc-trigger-5" aria-expanded="false" aria-controls="acc-panel-5">
                 <span class="accordion-title-inner">
                   <span class="accordion-icon-tag" aria-hidden="true">⚠️</span>
                   <span>Excepciones modeladas</span>
                 </span>
                 <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </button>
-              <div class="accordion-panel">
+              <div class="accordion-panel" id="acc-panel-5" role="region" aria-labelledby="acc-trigger-5">
                 <div class="accordion-panel-inner">
                   <p>Si el partido ya se completó antes de solicitar permiso, no se le pide nada al organizador. Si el organizador no responde (tiempo de espera vencido o inactividad), el candidato permanece en espera preventiva y jamás se envía la invitación por defecto.</p>
                 </div>
@@ -807,14 +807,14 @@
 
             <!-- Item 6: Intervención humana -->
             <div class="accordion-item">
-              <button class="accordion-trigger" aria-expanded="false">
+              <button type="button" class="accordion-trigger" id="acc-trigger-6" aria-expanded="false" aria-controls="acc-panel-6">
                 <span class="accordion-title-inner">
                   <span class="accordion-icon-tag" aria-hidden="true">👤</span>
                   <span>Intervención humana</span>
                 </span>
                 <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </button>
-              <div class="accordion-panel">
+              <div class="accordion-panel" id="acc-panel-6" role="region" aria-labelledby="acc-trigger-6">
                 <div class="accordion-panel-inner">
                   <p><strong>El organizador decide.</strong> Es el paso humano insoslayable: sin la aprobación explícita del organizador para ese candidato concreto, el sistema tiene vedado continuar hacia el envío.</p>
                 </div>
@@ -823,14 +823,14 @@
 
             <!-- Item 7: Casos de prueba R4 (Cumple / No cumple) -->
             <div class="accordion-item">
-              <button class="accordion-trigger" aria-expanded="false">
+              <button type="button" class="accordion-trigger" id="acc-trigger-7" aria-expanded="false" aria-controls="acc-panel-7">
                 <span class="accordion-title-inner">
                   <span class="accordion-icon-tag" aria-hidden="true">🧪</span>
                   <span>Casos prácticos de prueba</span>
                 </span>
                 <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </button>
-              <div class="accordion-panel">
+              <div class="accordion-panel" id="acc-panel-7" role="region" aria-labelledby="acc-trigger-7">
                 <div class="accordion-panel-inner">
                   <div class="case-example-card case-success">
                     <div class="case-title">Caso en que la regla se activa (Se pide permiso y no se envía)</div>
@@ -854,14 +854,14 @@
 
             <!-- Item 1: Datos que entran -->
             <div class="accordion-item">
-              <button class="accordion-trigger" aria-expanded="false">
+              <button type="button" class="accordion-trigger" id="acc-trigger-8" aria-expanded="false" aria-controls="acc-panel-8">
                 <span class="accordion-title-inner">
                   <span class="accordion-icon-tag" aria-hidden="true">📥</span>
                   <span>Datos que entran</span>
                 </span>
                 <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </button>
-              <div class="accordion-panel">
+              <div class="accordion-panel" id="acc-panel-8" role="region" aria-labelledby="acc-trigger-8">
                 <div class="accordion-panel-inner">
                   <p>El candidato previamente autorizado (Condición 1 garantizada), su disponibilidad actual (horario, zona y estado activo), la cantidad en tiempo real de jugadores confirmados para el partido y el registro histórico de invitaciones cursadas.</p>
                 </div>
@@ -870,14 +870,14 @@
 
             <!-- Item 2: Qué se decide -->
             <div class="accordion-item">
-              <button class="accordion-trigger" aria-expanded="false">
+              <button type="button" class="accordion-trigger" id="acc-trigger-9" aria-expanded="false" aria-controls="acc-panel-9">
                 <span class="accordion-title-inner">
                   <span class="accordion-icon-tag" aria-hidden="true">⚖️</span>
                   <span>Qué se decide</span>
                 </span>
                 <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </button>
-              <div class="accordion-panel">
+              <div class="accordion-panel" id="acc-panel-9" role="region" aria-labelledby="acc-trigger-9">
                 <div class="accordion-panel-inner">
                   <p>Si se cumplen simultáneamente las 3 condiciones restantes: que el candidato continúe siendo compatible, que aún falten jugadores en el partido y que no posea una invitación vigente a este mismo encuentro.</p>
                 </div>
@@ -886,14 +886,14 @@
 
             <!-- Item 3: Acción propuesta -->
             <div class="accordion-item">
-              <button class="accordion-trigger" aria-expanded="false">
+              <button type="button" class="accordion-trigger" id="acc-trigger-10" aria-expanded="false" aria-controls="acc-panel-10">
                 <span class="accordion-title-inner">
                   <span class="accordion-icon-tag" aria-hidden="true">⚡</span>
                   <span>Acción propuesta</span>
                 </span>
                 <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </button>
-              <div class="accordion-panel">
+              <div class="accordion-panel" id="acc-panel-10" role="region" aria-labelledby="acc-trigger-10">
                 <div class="accordion-panel-inner">
                   <p>Solicitar el envío formal de la invitación a ese candidato mediante la función de despacho de notificaciones de la aplicación.</p>
                 </div>
@@ -902,14 +902,14 @@
 
             <!-- Item 4: Resultado esperado -->
             <div class="accordion-item">
-              <button class="accordion-trigger" aria-expanded="false">
+              <button type="button" class="accordion-trigger" id="acc-trigger-11" aria-expanded="false" aria-controls="acc-panel-11">
                 <span class="accordion-title-inner">
                   <span class="accordion-icon-tag" aria-hidden="true">🏁</span>
                   <span>Resultado esperado</span>
                 </span>
                 <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </button>
-              <div class="accordion-panel">
+              <div class="accordion-panel" id="acc-panel-11" role="region" aria-labelledby="acc-trigger-11">
                 <div class="accordion-panel-inner">
                   <p>Una solicitud de envío concretada y registrada en el historial del partido, o bien un registro específico de qué condición impidió el despacho (incompatibilidad, cupo colmado o invitación preexistente).</p>
                 </div>
@@ -918,14 +918,14 @@
 
             <!-- Item 5: Excepciones -->
             <div class="accordion-item">
-              <button class="accordion-trigger" aria-expanded="false">
+              <button type="button" class="accordion-trigger" id="acc-trigger-12" aria-expanded="false" aria-controls="acc-panel-12">
                 <span class="accordion-title-inner">
                   <span class="accordion-icon-tag" aria-hidden="true">⚠️</span>
                   <span>Excepciones modeladas</span>
                 </span>
                 <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </button>
-              <div class="accordion-panel">
+              <div class="accordion-panel" id="acc-panel-12" role="region" aria-labelledby="acc-trigger-12">
                 <div class="accordion-panel-inner">
                   <p>Si entre que el organizador autorizó y el agente iba a enviar la invitación el partido se completó o el candidato modificó sus preferencias, la invitación se frena de inmediato y se documenta el motivo. Asimismo, si ya existe una invitación enviada y pendiente a ese jugador, se impide un envío duplicado.</p>
                 </div>
@@ -934,14 +934,14 @@
 
             <!-- Item 6: Intervención humana -->
             <div class="accordion-item">
-              <button class="accordion-trigger" aria-expanded="false">
+              <button type="button" class="accordion-trigger" id="acc-trigger-13" aria-expanded="false" aria-controls="acc-panel-13">
                 <span class="accordion-title-inner">
                   <span class="accordion-icon-tag" aria-hidden="true">👤</span>
                   <span>Intervención humana</span>
                 </span>
                 <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </button>
-              <div class="accordion-panel">
+              <div class="accordion-panel" id="acc-panel-13" role="region" aria-labelledby="acc-trigger-13">
                 <div class="accordion-panel-inner">
                   <p><strong>No interviene una persona en este paso.</strong> La decisión humana ya tuvo lugar en R4 al otorgar el visto bueno. En R3 el agente de software evalúa automáticamente las condiciones lógicas objetivas.</p>
                 </div>
@@ -950,14 +950,14 @@
 
             <!-- Item 7: Casos de prueba R3 (Cumple / No cumple) -->
             <div class="accordion-item">
-              <button class="accordion-trigger" aria-expanded="false">
+              <button type="button" class="accordion-trigger" id="acc-trigger-14" aria-expanded="false" aria-controls="acc-panel-14">
                 <span class="accordion-title-inner">
                   <span class="accordion-icon-tag" aria-hidden="true">🧪</span>
                   <span>Casos prácticos de prueba</span>
                 </span>
                 <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </button>
-              <div class="accordion-panel">
+              <div class="accordion-panel" id="acc-panel-14" role="region" aria-labelledby="acc-trigger-14">
                 <div class="accordion-panel-inner">
                   <div class="case-example-card case-success">
                     <div class="case-title">Caso en que se envía la invitación (Éxito completo)</div>
