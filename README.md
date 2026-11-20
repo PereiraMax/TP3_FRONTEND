@@ -9,8 +9,8 @@
 
 ## 🔗 Enlaces del Proyecto (Criterio 02 · Rúbrica)
 
-- **Repositorio en GitHub:** [https://github.com/PereiraMax/tp3-matchdeverdad](https://github.com/PereiraMax/tp3-matchdeverdad)
-- **Landing Page Publicada:** [https://pereiramax.github.io/tp3-matchdeverdad/](https://pereiramax.github.io/tp3-matchdeverdad/)
+- **Repositorio en GitHub:** [https://github.com/PereiraMax/TP3_FRONTEND](https://github.com/PereiraMax/TP3_FRONTEND)
+- **Landing Page Publicada:** [https://proyectoifts29tp3grupo26.vercel.app/](https://proyectoifts29tp3grupo26.vercel.app/)
 
 > **Verificación sin sesión:** Ambos enlaces son de acceso público irrestricto y no requieren inicio de sesión ni permisos especiales para su visualización y auditoría técnica.
 
@@ -33,13 +33,15 @@
 
 ## 👥 Integrantes del Grupo (Criterio 01 · Nivel Propone)
 
-| Integrante | GitHub |
-| :--- | :--- |
-| Maximo Ariel Pereira | [PereiraMax](https://github.com/PereiraMax) |
-| Julian Piedrabuena | [juliganSW](https://github.com/juliganSW) |
-| Martin Savia | [martin-2t](https://github.com/martin-2t) |
-| Emmanuel Valdez | [Emmanuel-Valdez](https://github.com/Emmanuel-Valdez) |
-| Matias Mazzitelli | [mdev-repos](https://github.com/mdev-repos) |
+| Integrante | GitHub | Aporte concreto |
+| :--- | :--- | :--- |
+| Maximo Ariel Pereira | [PereiraMax](https://github.com/PereiraMax) | Uso de Google Antigravity IDE con Gemini 3.8 Flash para la generación agéntica de la landing (HTML, CSS, JS, SVG). |
+| Julian Piedrabuena | [juliganSW](https://github.com/juliganSW) | *(completar)* |
+| Martin Savia | [martin-2t](https://github.com/martin-2t) | *(completar)* |
+| Emmanuel Valdez | [Emmanuel-Valdez](https://github.com/Emmanuel-Valdez) | Uso de OpenCode (plan Go) con DeepSeek 4.1 y Qwen 3.7 para iteraciones de código, revisión contra consigna, accesibilidad y responsive. |
+| Matias Mazzitelli | [mdev-repos](https://github.com/mdev-repos) | *(completar)* |
+
+> **Cada integrante debe completar su aporte concreto** describiendo qué parte del proyecto dirigió con el agente (ej: «Diagramas SVG de R4 y R3», «Simulador interactivo», «Sección de sentencias y desplegables», «Responsive y accesibilidad», «README y documentación de rúbrica»).
 
 ### 🔍 Revisión Cruzada Documentada y Mejora Concreta (Nivel Propone)
 Durante la sesión de revisión interna del grupo, se contrastó el diagrama preliminar generado por el agente frente a la realidad del producto:
@@ -52,17 +54,23 @@ Durante la sesión de revisión interna del grupo, se contrastó el diagrama pre
 
 El desarrollo del proyecto se ejecutó bajo la consigna de **Construcción 100% Agéntica**, sin edición manual de código:
 
-- **Aplicación / Entorno de Trabajo:** **Google Antigravity IDE**
-- **Modelo de Inteligencia Artificial:** **Gemini 3.8 Flash**
-- **Registro de Iteración Agéntica (Nivel Propone):**
-  1. *Instrucción inicial:* «Generá la landing page con la información de Matchdeverdad, las dos sentencias y diagramas de flujo en HTML/CSS/JS».
-  2. *Problema detectado:* La primera versión presentaba las sentencias como procesos aislados sin explicitar que R4 antecede a R3, omitía la etiqueta `⚙ diseño` en los supuestos no definidos por la lógica y no contemplaba la navegación por teclado en los acordeones.
-  3. *Pedido de mejora y resultado:* Se proporcionó el documento *«PROPUESTAS TP3»*, ordenando:
-     - Incorporar la paleta de colores original de Matchdeverdad (Azul Marino Profundo `#0b2347`, Dorado Deportivo `#ffcc00`, Azul Hielo `#edf4fb`).
-     - Rotular cada supuesto con el badge `⚙ diseño`.
-     - Implementar los 3 diagramas vectoriales SVG (R4, R3 y Recorrido Completo).
-     - Añadir un simulador interactivo que permita recorrer en tiempo real casos que cumplen y casos que fallan.
-     - Implementar soporte total para teclado (`Enter`, `Espacio`, `aria-expanded`).
+### Herramientas y modelos
+
+| Herramienta | Modelo | Uso y aporte concreto |
+| :--- | :--- | :--- |
+| **Google Antigravity IDE** | Gemini 3.8 Flash | Entorno de programación agéntica. Se utilizó para generar y modificar todos los archivos del proyecto (HTML, CSS, JS y SVG) mediante instrucciones en lenguaje natural, sin edición manual de código. |
+| **OpenCode** | DeepSeek 4.1 / Qwen 3.7 | Editor agéntico en terminal (plan OpenCode Go). Se utilizó para dirigirlas iteraciones de código, revisión de archivos, comparación con la consigna y ajustes de accesibilidad, responsive y estructura del README. |
+
+### Registro de Iteración Agéntica (Nivel Propone)
+
+1. **Instrucción inicial:** «Generá la landing page con la información de Matchdeverdad, las dos sentencias y diagramas de flujo en HTML/CSS/JS».
+2. **Problema detectado:** La primera versión presentaba las sentencias como procesos aislados sin explicitar que R4 antecede a R3, omitía la etiqueta `⚙ diseño` en los supuestos no definidos por la lógica y no contemplaba la navegación por teclado en los acordeones.
+3. **Pedido de mejora y resultado:** Se proporcionó el documento *«PROPUESTAS TP3»*, ordenando:
+   - Incorporar la paleta de colores original de Matchdeverdad (Azul Marino Profundo `#0b2347`, Dorado Deportivo `#ffcc00`, Azul Hielo `#edf4fb`).
+   - Rotular cada supuesto con el badge `⚙ diseño`.
+   - Implementar los 3 diagramas vectoriales SVG (R4, R3 y Recorrido Completo).
+   - Añadir un simulador interactivo que permita recorrer en tiempo real casos que cumplen y casos que fallan.
+   - Implementar soporte total para teclado (`Enter`, `Espacio`, `aria-expanded`).
 
 ---
 
