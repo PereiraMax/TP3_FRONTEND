@@ -41,8 +41,6 @@
 | Emmanuel Valdez | [Emmanuel-Valdez](https://github.com/Emmanuel-Valdez) | Uso de OpenCode (plan Go) con DeepSeek 4.1 y Qwen 3.7 para iteraciones de código, revisión contra consigna, accesibilidad y responsive. |
 | Matias Mazzitelli | [mdev-repos](https://github.com/mdev-repos) | *(completar)* |
 
-> **Cada integrante debe completar su aporte concreto** describiendo qué parte del proyecto dirigió con el agente (ej: «Diagramas SVG de R4 y R3», «Simulador interactivo», «Sección de sentencias y desplegables», «Responsive y accesibilidad», «README y documentación de rúbrica»).
-
 ### 🔍 Revisión Cruzada Documentada y Mejora Concreta (Nivel Propone)
 Durante la sesión de revisión interna del grupo, se contrastó el diagrama preliminar generado por el agente frente a la realidad del producto:
 - **Problema detectado por el equipo:** El agente inicialmente proponía que, al recibir la autorización del organizador en R4, el sistema enviara directamente la invitación al jugador. El equipo advirtió que el organizador puede demorar horas o días en contestar. Si el envío se produjera de inmediato, se podría invitar a alguien cuando el partido ya se hubiera llenado con otros confirmados, o cuando el jugador ya no estuviese libre.
