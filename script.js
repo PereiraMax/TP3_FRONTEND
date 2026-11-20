@@ -33,14 +33,8 @@ function initAccordions() {
       toggleAccordion(item, !isOpen);
     });
 
-    // Keyboard support: Enter / Space
-    trigger.addEventListener('keydown', (e) => {
-      if (e.key === ' ' || e.key === 'Enter') {
-        e.preventDefault();
-        const isOpen = item.classList.contains('open');
-        toggleAccordion(item, !isOpen);
-      }
-    });
+    // Teclado: el <button> nativo ya dispara "click" con Enter y Espacio,
+    // por lo que no hace falta un manejador de keydown (evita doble alternancia).
   });
 
   // Recalcula la altura de los paneles abiertos cuando cambia el ancho de pantalla
@@ -96,21 +90,37 @@ function initDiagramTabs() {
   const tabButtons = document.querySelectorAll('.diagram-tab-btn');
   const tabPanes = document.querySelectorAll('.diagram-content-pane');
 
-  tabButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const targetId = btn.getAttribute('data-target');
+  const tabs = Array.from(tabButtons);
 
-      tabButtons.forEach(b => {
-        b.classList.remove('active');
-        b.setAttribute('aria-selected', 'false');
-      });
-      tabPanes.forEach(p => p.classList.remove('active'));
+  // Activa una pestaña (patrón ARIA "tabs": solo la activa entra en el orden de Tab)
+  function activateTab(btn, moveFocus = false) {
+    tabs.forEach(b => {
+      const selected = b === btn;
+      b.classList.toggle('active', selected);
+      b.setAttribute('aria-selected', String(selected));
+      b.setAttribute('tabindex', selected ? '0' : '-1');
+    });
+    tabPanes.forEach(p => p.classList.remove('active'));
 
-      btn.classList.add('active');
-      btn.setAttribute('aria-selected', 'true');
-      const targetPane = document.getElementById(targetId);
-      if (targetPane) {
-        targetPane.classList.add('active');
+    const targetPane = document.getElementById(btn.getAttribute('data-target'));
+    if (targetPane) targetPane.classList.add('active');
+    if (moveFocus) btn.focus();
+  }
+
+  tabs.forEach((btn, index) => {
+    btn.addEventListener('click', () => activateTab(btn));
+
+    // Navegación con flechas, Inicio y Fin dentro de la lista de pestañas
+    btn.addEventListener('keydown', (e) => {
+      let next = null;
+      if (e.key === 'ArrowRight') next = tabs[(index + 1) % tabs.length];
+      else if (e.key === 'ArrowLeft') next = tabs[(index - 1 + tabs.length) % tabs.length];
+      else if (e.key === 'Home') next = tabs[0];
+      else if (e.key === 'End') next = tabs[tabs.length - 1];
+
+      if (next) {
+        e.preventDefault();
+        activateTab(next, true);
       }
     });
   });

@@ -1146,8 +1146,16 @@ button {
 .accordion-panel {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Cerrado: fuera del foco de teclado y de los lectores de pantalla.
+     La visibilidad se retrasa hasta terminar la animación de cierre. */
+  visibility: hidden;
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s linear 0.3s;
   background: #ffffff;
+}
+
+.accordion-item.open > .accordion-panel {
+  visibility: visible;
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s;
 }
 
 .accordion-panel-inner {
