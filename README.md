@@ -39,7 +39,7 @@
 | Julian Piedrabuena | [juliganSW](https://github.com/juliganSW) | *(completar)* |
 | Martin Savia | [martin-2t](https://github.com/martin-2t) | *(completar)* |
 | Emmanuel Valdez | [Emmanuel-Valdez](https://github.com/Emmanuel-Valdez) | Uso de OpenCode (plan Go) con DeepSeek 4.1 y Qwen 3.7 para iteraciones de código, revisión contra consigna, accesibilidad y responsive. |
-| Matias Mazzitelli | [mdev-repos](https://github.com/mdev-repos) | *(completar)* |
+| Matias Mazzitelli | [mdev-repos](https://github.com/mdev-repos) | Uso de Claude Code (Sonnet 5.5) para revisar las consignas y los criterios de evaluación, iterar con el agente para elaborar una propuesta de solución ("Un Tinder para partidos de futbol 5) y revisar el código generado por los demás agentes. |
 
 ### 🔍 Revisión Cruzada Documentada y Mejora Concreta (Nivel Propone)
 Durante la sesión de revisión interna del grupo, se contrastó el diagrama preliminar generado por el agente frente a la realidad del producto:
@@ -58,6 +58,7 @@ El desarrollo del proyecto se ejecutó bajo la consigna de **Construcción 100% 
 | :--- | :--- | :--- |
 | **Google Antigravity IDE** | Gemini 3.8 Flash | Entorno de programación agéntica. Se utilizó para generar y modificar todos los archivos del proyecto (HTML, CSS, JS y SVG) mediante instrucciones en lenguaje natural, sin edición manual de código. |
 | **OpenCode** | DeepSeek 4.1 / Qwen 3.7 | Editor agéntico en terminal (plan OpenCode Go). Se utilizó para dirigirlas iteraciones de código, revisión de archivos, comparación con la consigna y ajustes de accesibilidad, responsive y estructura del README. |
+| **Claude Code** | Sonnet 5.5 | Aplicación de escritorio de Claude. Se utilizó para evaluar los primeros intercambios del grupo, pulir ideas y generar una propuesta que se ajuste de mejor manera a la consigna y los criterios de evaluación. |
 
 ### Registro de Iteración Agéntica (Nivel Propone)
 
